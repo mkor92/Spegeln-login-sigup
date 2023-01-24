@@ -7,6 +7,6 @@ export async function movieInfo() {
   }
   function openMovieInfo(e) {
     e.preventDefault();
-    window.open("under-construction.html");
+    window.open("/UC");
   }
 }

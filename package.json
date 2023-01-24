@@ -1,28 +1,29 @@
 {
-  "name": "uppgift2-biograf",
+  "name": "cinemasite-ssr",
   "version": "1.0.0",
-  "description": "GruppUppgift 2 – webbsida till Biograf",
+  "description": "CinemaSite-SSR",
   "main": "index.js",
   "type": "module",
   "scripts": {
     "start": "nodemon ."
   },
   "keywords": [],
-  "author": "Markus Korhonen, Marta Anna Todorovic, Jakob Palmborg, Fabricio Olave Flores, Olliver Larsson, Danne Carlson",
+  "author": "Markus Korhonen",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/mkor92/Uppgift2-Biograf/issues"
+    "url": "https://github.com/mkor92/CinemaSite-SSR"
   },
-  "homepage": "https://github.com/mkor92/Uppgift2-Biograf#readme",
+  "homepage": "https://github.com/mkor92/CinemaSite-SSR#readme",
   "devDependencies": {
     "nodemon": "^2.0.20",
     "sass": "^1.57.1"
   },
   "dependencies": {
+    "ejs": "^3.1.8",
     "express": "^4.18.2"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/mkor92/Uppgift2-Biograf.git"
+    "url": "git+https://github.com/mkor92/CinemaSite-SSR.git"
   }
 }

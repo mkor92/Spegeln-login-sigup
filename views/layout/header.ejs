@@ -26,28 +26,34 @@
       src="https://kit.fontawesome.com/04d50240d2.js"
       crossorigin="anonymous"
     ></script>
-    <link rel="stylesheet" href="static/css/main.css" />
+    <link rel="stylesheet" type="text/css" href="/static/css/main.css" />
     <title>Biograf Luleå</title>
   </head>
 
   <body>
-    %header% %menu%
-    <main class="sec">
-      <section class="sec-cont">
-        <div class="under-construction-container">
-          <h1 class="under-construction-heading">Under Construction</h1>
-          <div class="under-construction-icon-container">
-            <i class="fa-solid fa-wrench fa-10x"></i>
-          </div>
-          <div class="under-construction-btn-container">
-            <a href="index.html" class="under-construction-link-home"
-              >Tillbaks hem</a
-            >
-          </div>
-        </div>
-      </section>
-    </main>
-
-    %footer%
+    <header class="sec">
+      <div class="header-content-wrap sec-cont">
+        <a href="/" class="logo"
+          ><img src="static/images/Logo.png" alt="logo"
+        /></a>
+        <nav class="header-nav">
+          <button class="header-nav-toggle"></button>
+          <menu class="header-menu">
+            <li>
+              <a class="header-menu-item active" href="/">Hem</a>
+            </li>
+            <li>
+              <a class="header-menu-item" href="/about">Om oss</a>
+            </li>
+            <li>
+              <a class="header-menu-item" href="/UC">Biljettinfo</a>
+            </li>
+            <li>
+              <a class="header-menu-item" href="/UC">Presentkort</a>
+            </li>
+          </menu>
+        </nav>
+      </div>
+    </header>
   </body>
 </html>
