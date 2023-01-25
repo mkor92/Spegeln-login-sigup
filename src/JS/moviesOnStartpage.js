@@ -1,4 +1,4 @@
-import { getMovies } from "./getMovies.js";
+/*import { getMovies } from "./getMovies.js";
 
 export default function moviesOnStartpage() {
 if (
@@ -50,4 +50,4 @@ if (
         });
     })();
   }
-}
+}*/

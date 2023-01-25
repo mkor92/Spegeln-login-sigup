@@ -30,15 +30,26 @@ function menuWithActive(items, path) {
   }));
 }
 
-app.get("/", (req, res) => {
-  res.status(200).render("index", {
-    headerMenu: menuWithActive(headerMenu, "/"),
-  });
-});
-
 app.get("/movies", async (req, res) => {
   const movies = await loadMovies();
   res.status(200).render("movies", {
+    headerMenu: headerMenu,
+    movies,
+  });
+});
+
+app.get("/movies/:movieId", async (req, res) => {
+  const movie = await loadMovie(req.params.movieId);
+  console.log("hej" + movie);
+  res.render("movie-info", {
+    headerMenu: headerMenu,
+    movie,
+  });
+});
+
+app.get("/", async (req, res) => {
+  const movies = await loadMovies();
+  res.status(200).render("index", {
     headerMenu: headerMenu,
     movies,
   });
@@ -58,12 +69,6 @@ app.get("/about", (req, res) => {
 
 app.get("/events", (req, res) => {
   res.status(200).render("events", {
-    headerMenu: headerMenu,
-  });
-});
-
-app.get("/movie-info", (req, res) => {
-  res.status(200).render("movie-info", {
     headerMenu: headerMenu,
   });
 });

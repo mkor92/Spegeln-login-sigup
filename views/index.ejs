@@ -1,11 +1,16 @@
 
     <%- include ("./layout/header") %> <%- include ("./layout/menu") %>
 
-    <main class="sec clear-main">
+    <main class="sec clear-main movies">
      
       <%- include ("./layout/accordion") %>
-      <%- include ("./layout/sidebarMoviesToday") %>
       
+      <section class="movies-content sec-cont">
+        <h2 class="movies-h2">Alla filmer</h2>
+      <%- include ("./layout/render-movies") %>
+      
+   
+    </section>
     </main>
     
     <%- include ("./layout/footer") %>

@@ -1,10 +1,16 @@
 <%- include ("./layout/header") %> <%- include ("./layout/menu") %>
     <main class="sec">
-      <section class="sec-cont">
-        <h1 class="description"></h1>
-      </section>
+      <article class="movie sec-cont">
+        <div>
+        <h1 class="title"><%= movie.attributes.title %></h1>
+      </div>
+        <div class="movie-text">
+          <img src="<%= movie.attributes.image.url %>" alt="movie image" class="movie-img">
+        <p class="intro"><%= movie.attributes.intro %></p>
+      </div>
+      </article>
     </main>
     <%- include ("./layout/footer") %>
-    <script type="module" src="src/JS/movie-info.js" defer></script>
+  
   </body>
   </html>

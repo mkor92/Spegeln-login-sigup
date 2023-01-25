@@ -1,4 +1,4 @@
-export async function movieInfo() {
+/*export async function movieInfo() {
   const movieOption = document.querySelectorAll(".movies-list-item");
   const description = document.querySelector(".description");
 
@@ -9,4 +9,4 @@ export async function movieInfo() {
     e.preventDefault();
     window.open("/UC");
   }
-}
+}*/
