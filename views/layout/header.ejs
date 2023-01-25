@@ -39,18 +39,16 @@
         <nav class="header-nav">
           <button class="header-nav-toggle"></button>
           <menu class="header-menu">
+            <% headerMenu.forEach(function(a) { %>
             <li>
-              <a class="header-menu-item active" href="/">Hem</a>
+              <a
+                class="header-menu-item <% if (a.active) { %>active<% } %>"
+                href="<%= a.link %>"
+              >
+                <%= a.label %>
+              </a>
             </li>
-            <li>
-              <a class="header-menu-item" href="/about">Om oss</a>
-            </li>
-            <li>
-              <a class="header-menu-item" href="/UC">Biljettinfo</a>
-            </li>
-            <li>
-              <a class="header-menu-item" href="/UC">Presentkort</a>
-            </li>
+            <% }); %>
           </menu>
         </nav>
       </div>

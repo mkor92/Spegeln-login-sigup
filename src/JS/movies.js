@@ -1,4 +1,17 @@
-import { getMovies } from "./getMovies.js";
+const API_URL = "https://plankton-app-xhkom.ondigitalocean.app/api/movies ";
+
+export async function loadMovies() {
+  const res = await fetch(API_URL);
+  const payload = await res.json();
+  return payload.data;
+}
+export async function loadMovie(id) {
+  const res = await fetch(API_URL + id);
+  const payload = await res.json();
+  return payload.data;
+}
+
+/*import { getMovies } from "./getMovies.js";
 import { movieInfo } from "./movie-info.js";
 
 export async function renderMovies() {
@@ -95,4 +108,4 @@ export async function renderMovies() {
     });
   });
 }
-renderMovies();
+renderMovies();*/

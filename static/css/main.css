@@ -267,11 +267,7 @@ header nav menu .active {
   height: 2rem;
 }
 .accordion-cont .slide-btn.prev {
-  background-image: linear-gradient(
-    to right,
-    rgba(0, 0, 0, 0.5) 0,
-    rgba(0, 0, 0, 0.0001) 100%
-  );
+  background-image: linear-gradient(to right, rgba(0, 0, 0, 0.5) 0, rgba(0, 0, 0, 0.0001) 100%);
   left: 0;
   opacity: 0.5;
 }
@@ -282,11 +278,7 @@ header nav menu .active {
   filter: invert(95%);
 }
 .accordion-cont .slide-btn.next {
-  background-image: linear-gradient(
-    to left,
-    rgba(0, 0, 0, 0.5) 0,
-    rgba(0, 0, 0, 0.0001) 100%
-  );
+  background-image: linear-gradient(to left, rgba(0, 0, 0, 0.5) 0, rgba(0, 0, 0, 0.0001) 100%);
   right: 0;
   opacity: 0.5;
 }
@@ -717,6 +709,10 @@ header nav menu .active {
   max-width: 200px;
   margin: auto;
 }
+.movies .movies-list .movies-list-item a {
+  color: white;
+  background-color: rgba(0, 0, 0, 0.5);
+}
 .movies .movies-list .movies-list-item p {
   color: white;
   margin-top: -40px;
@@ -728,10 +724,15 @@ header nav menu .active {
   padding: 4px;
 }
 .movies .movies-list .movies-list-item img {
+  display: block;
   border: 1px solid white;
+  max-width: 180px;
+  max-height: 250px;
+  margin-bottom: 20px auto 20px auto;
 }
 .movies .movies-list .movies-list-item img:hover {
-  transform: scale(1.1);
+  transform: scale(1.02);
+  border: 2px solid #cc0028;
   cursor: pointer;
 }
 
