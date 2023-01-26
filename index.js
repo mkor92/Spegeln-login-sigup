@@ -33,7 +33,7 @@ function menuWithActive(items, path) {
 
 app.get("/movies", async (req, res) => {
   const movies = await loadMovies();
-  res.status(200).render("movies", {
+  res.render("movies", {
     headerMenu: headerMenu,
     movies,
     movieHeader: "Alla filmer",
@@ -42,17 +42,24 @@ app.get("/movies", async (req, res) => {
 
 app.get("/movies/:movieId", async (req, res) => {
   const movie = await loadMovie(req.params.movieId);
-  console.log("hej" + movie);
-  res.render("movie-info", {
-    headerMenu: headerMenu,
-    movie,
-    intro: marked.parse(movie.attributes.intro),
-  });
+  if (movie) {
+    res.render("movie-info", {
+      headerMenu: headerMenu,
+      movie,
+      title: movie.attributes.title,
+      intro: marked.parseInline(movie.attributes.intro),
+      image: movie.attributes.image.url,
+    });
+  } else {
+    res.status(404).render("404", {
+      headerMenu: headerMenu,
+    });
+  }
 });
 
 app.get("/", async (req, res) => {
   const movies = await loadMovies();
-  res.status(200).render("index", {
+  res.render("index", {
     headerMenu: headerMenu,
     movies,
     movieHeader: "På bion just nu",
@@ -60,49 +67,49 @@ app.get("/", async (req, res) => {
 });
 
 app.get("/salons", (req, res) => {
-  res.status(200).render("salons", {
+  res.render("salons", {
     headerMenu: headerMenu,
   });
 });
 
 app.get("/about", (req, res) => {
-  res.status(200).render("about-us", {
+  res.render("about-us", {
     headerMenu: menuWithActive(headerMenu, "/about"),
   });
 });
 
 app.get("/events", (req, res) => {
-  res.status(200).render("events", {
+  res.render("events", {
     headerMenu: headerMenu,
   });
 });
 
 app.get("/restaurant", (req, res) => {
-  res.status(200).render("restaurant", {
+  res.render("restaurant", {
     headerMenu: headerMenu,
   });
 });
 
 app.get("/salon-a", (req, res) => {
-  res.status(200).render("salonA", {
+  res.render("salonA", {
     headerMenu: headerMenu,
   });
 });
 
 app.get("/salon-b", (req, res) => {
-  res.status(200).render("salonB", {
+  res.render("salonB", {
     headerMenu: headerMenu,
   });
 });
 
 app.get("/UC", (req, res) => {
-  res.status(200).render("under-construction", {
+  res.render("under-construction", {
     headerMenu: headerMenu,
   });
 });
 
 app.get("/booking", (req, res) => {
-  res.status(200).render("booking", {
+  res.render("booking", {
     headerMenu: headerMenu,
   });
 });

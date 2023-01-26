@@ -737,13 +737,13 @@ header nav menu .active {
 }
 
 .movie {
-  margin-top: 5em;
+  margin: 5em auto;
 }
 .movie h1,
 .movie p {
   color: white;
   font-size: 1.2em;
-  background-color: rgba(0, 0, 0, 0.5);
+  background-color: rgba(0, 0, 0, 0.8);
   padding: 1.5rem;
   border-radius: 0.4rem;
 }
@@ -791,8 +791,13 @@ header nav menu .active {
   .movie {
     font-size: 0.8em;
   }
+  .movie p {
+    max-width: 450px;
+    text-align: center;
+  }
   .movie .movie-text {
     flex-direction: column;
+    justify-items: center;
   }
   .movie img {
     max-width: 100%;
@@ -1019,4 +1024,37 @@ header nav menu .active {
   .events-title {
     margin-left: 1.5rem;
   }
+}
+.fyranollfyra {
+  margin-top: 40px;
+}
+.fyranollfyra div {
+  margin: 0px, auto;
+  text-align: center;
+  padding: 2rem 1rem;
+  background-color: rgba(0, 0, 0, 0.8);
+  margin: 2em auto;
+  border-radius: 0.4rem;
+  width: fit-content;
+}
+.fyranollfyra div h2,
+.fyranollfyra div h3 {
+  color: white;
+  margin: 1rem;
+}
+.fyranollfyra div p {
+  margin-bottom: 2em;
+  font-weight: bold;
+  color: white;
+}
+.fyranollfyra div a {
+  color: white;
+  background-color: #cc0028;
+  padding: 0.6rem 1.8rem;
+  border-radius: 10px;
+  font-size: 1.2rem;
+  font-weight: bold;
+  border: none;
+  margin: 0px, auto;
+  cursor: pointer;
 }
