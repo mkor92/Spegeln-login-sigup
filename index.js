@@ -1,4 +1,5 @@
 import express from "express";
+import { marked } from "marked";
 import { loadMovie, loadMovies } from "./src/JS/movies.js";
 
 let headerMenu = [
@@ -35,6 +36,7 @@ app.get("/movies", async (req, res) => {
   res.status(200).render("movies", {
     headerMenu: headerMenu,
     movies,
+    movieHeader: "Alla filmer",
   });
 });
 
@@ -44,6 +46,7 @@ app.get("/movies/:movieId", async (req, res) => {
   res.render("movie-info", {
     headerMenu: headerMenu,
     movie,
+    intro: marked.parse(movie.attributes.intro),
   });
 });
 
@@ -52,6 +55,7 @@ app.get("/", async (req, res) => {
   res.status(200).render("index", {
     headerMenu: headerMenu,
     movies,
+    movieHeader: "På bion just nu",
   });
 });
 
