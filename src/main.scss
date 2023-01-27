@@ -9,7 +9,8 @@
 }
 
 body {
-  background-image: url("../images/Background_cinema.jpg");
+  background-image: linear-gradient(rgba(0, 0, 0, 0.45), rgba(0, 0, 0, 0.45)),
+    url("../images/Background_cinema.jpg");
   background-size: cover;
   min-height: 100vh;
   display: flex;
@@ -40,7 +41,6 @@ main {
 @import "sections/restaurant.scss";
 @import "sections/movies.scss";
 @import "sections/salons.scss";
-@import "sections/movies-startsida.scss";
 @import "sections/sidebar.scss";
 @import "sections/under-construction.scss";
 @import "sections/events.scss";

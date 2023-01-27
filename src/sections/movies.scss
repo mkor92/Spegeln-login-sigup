@@ -32,6 +32,10 @@
   .movies-h2 {
     margin: 20px 0px 10px;
     color: $second-color;
+    padding: 0.5rem;
+    background-color: rgba($first-color, 0.2);
+    width: fit-content;
+    border-radius: 0.5rem;
   }
   .movies-list {
     border-top: 1px solid $second-color;
@@ -45,10 +49,13 @@
     .movies-list-item {
       max-width: 200px;
       margin: auto;
+      text-align: center;
 
       a {
         color: white;
-        background-color: rgba($first-color, 0.5);
+        background-color: rgba($first-color, 0.4);
+        border-radius: 0.2rem;
+        margin: 0px, auto;
       }
 
       p {

@@ -8,7 +8,7 @@
 }
 
 body {
-  background-image: url("../images/Background_cinema.jpg");
+  background-image: linear-gradient(rgba(0, 0, 0, 0.45), rgba(0, 0, 0, 0.45)), url("../images/Background_cinema.jpg");
   background-size: cover;
   min-height: 100vh;
   display: flex;
@@ -695,6 +695,10 @@ header nav menu .active {
 .movies .movies-h2 {
   margin: 20px 0px 10px;
   color: white;
+  padding: 0.5rem;
+  background-color: rgba(0, 0, 0, 0.2);
+  width: fit-content;
+  border-radius: 0.5rem;
 }
 .movies .movies-list {
   border-top: 1px solid white;
@@ -708,10 +712,13 @@ header nav menu .active {
 .movies .movies-list .movies-list-item {
   max-width: 200px;
   margin: auto;
+  text-align: center;
 }
 .movies .movies-list .movies-list-item a {
   color: white;
-  background-color: rgba(0, 0, 0, 0.5);
+  background-color: rgba(0, 0, 0, 0.4);
+  border-radius: 0.2rem;
+  margin: 0px, auto;
 }
 .movies .movies-list .movies-list-item p {
   color: white;
