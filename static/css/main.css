@@ -59,7 +59,7 @@ header nav menu a {
   display: flex;
 }
 header nav menu a:hover {
-  transform: scale(1.2);
+  color: lightgray;
 }
 header nav menu .active {
   border-bottom: 4px solid white;

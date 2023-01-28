@@ -62,7 +62,7 @@ app.get("/", async (req, res) => {
   const movies = await loadMovies();
 
   res.render("index", {
-    headerMenu: headerMenu,
+    headerMenu: menuWithActive(headerMenu, "/"),
     movies,
     movieHeader: "På bion just nu",
     movieImage0: movies[0].attributes.image.url,
