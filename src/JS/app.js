@@ -60,10 +60,19 @@ app.get("/movies/:movieId", async (req, res) => {
 
 app.get("/", async (req, res) => {
   const movies = await loadMovies();
+
   res.render("index", {
     headerMenu: headerMenu,
     movies,
     movieHeader: "På bion just nu",
+    movieImage0: movies[0].attributes.image.url,
+    movieTitle0: movies[0].attributes.title,
+    movieImage1: movies[1].attributes.image.url,
+    movieTitle1: movies[1].attributes.title,
+    movieImage2: movies[2].attributes.image.url,
+    movieTitle2: movies[2].attributes.title,
+    movieImage3: movies[3].attributes.image.url,
+    movieTitle3: movies[3].attributes.title,
   });
 });
 
