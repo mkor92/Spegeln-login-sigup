@@ -1,3 +1,3 @@
-import app from "./src/JS/app.js";
+import app from "./JS_Backend/app.js";
 
 app.listen(5080);
