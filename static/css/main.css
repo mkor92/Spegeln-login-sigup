@@ -563,6 +563,33 @@ header nav menu .active {
   border: none;
 }
 
+.not-found {
+  margin-top: 3rem;
+}
+.not-found h1,
+.not-found p,
+.not-found a {
+  color: white;
+}
+.not-found h1 {
+  margin-bottom: 1rem;
+}
+.not-found p {
+  line-height: 2rem;
+}
+.not-found p span {
+  background-color: rgb(105, 105, 105);
+  border-radius: 0.5rem;
+  padding: 0.2rem 0.8rem;
+}
+.not-found a {
+  display: inline-block;
+  margin-top: 2rem;
+  padding: 0.5rem 1rem;
+  border-radius: 0.5rem;
+  background-color: #cc0028;
+}
+
 .res-sidebar {
   margin: 1.7rem auto 0 2rem !important;
 }
@@ -1031,37 +1058,4 @@ header nav menu .active {
   .events-title {
     margin-left: 1.5rem;
   }
-}
-.fyranollfyra {
-  margin-top: 40px;
-}
-.fyranollfyra div {
-  margin: 0px, auto;
-  text-align: center;
-  padding: 2rem 1rem;
-  background-color: rgba(0, 0, 0, 0.8);
-  margin: 2em auto;
-  border-radius: 0.4rem;
-  width: fit-content;
-}
-.fyranollfyra div h2,
-.fyranollfyra div h3 {
-  color: white;
-  margin: 1rem;
-}
-.fyranollfyra div p {
-  margin-bottom: 2em;
-  font-weight: bold;
-  color: white;
-}
-.fyranollfyra div a {
-  color: white;
-  background-color: #cc0028;
-  padding: 0.6rem 1.8rem;
-  border-radius: 10px;
-  font-size: 1.2rem;
-  font-weight: bold;
-  border: none;
-  margin: 0px, auto;
-  cursor: pointer;
 }

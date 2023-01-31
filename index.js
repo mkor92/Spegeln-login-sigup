@@ -1,3 +1,5 @@
-import app from "./JS_Backend/app.js";
+import app from './src/app.js'
 
-app.listen(5080);
+app.listen(app.get('port'), ()=> {
+    console.log(`Server listening on port ${app.get('port')}`);
+});
