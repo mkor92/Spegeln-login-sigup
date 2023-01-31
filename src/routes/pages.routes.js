@@ -1,5 +1,5 @@
 import { Router } from 'express';
-import { loadMovies, loadMovie } from './../movies.js';
+import { loadMovies, loadMovie } from '../helpers/movies.js';
 import { marked } from 'marked';
 import menu from '../../menu.js';
 

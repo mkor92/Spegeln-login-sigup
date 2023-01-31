@@ -1,2 +1,3 @@
 # Team-vadSomHelst
-GruppUppgift 2 – webbsida till Biograf 
+GruppUppgift 2 – Spegeln Del 2
+Visningar, betyg & recensioner

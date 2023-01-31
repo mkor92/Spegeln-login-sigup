@@ -12,10 +12,10 @@ app.use("/static", express.static("./static"));
 app.use('/', pageRoutes);
 app.use('/api', apiRoutes);
 app.get('*', (req, res) => {
-  res.render("404", {
-      path: req.url,
-      headerMenu: menu
-  });
+    res.render("404", {
+        path: req.url,
+        headerMenu: menu
+    });
 });
 
 export default app;
