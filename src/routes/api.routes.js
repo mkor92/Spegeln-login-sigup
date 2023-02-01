@@ -11,4 +11,6 @@ router.get('/', (req, res) => {
 
 router.get('/movies', apiCtrl.movies);
 
+router.get('/reviews', apiCtrl.reviews);
+
 export default router;
