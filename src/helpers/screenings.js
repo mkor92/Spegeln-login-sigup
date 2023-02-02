@@ -50,6 +50,6 @@ export async function screeningsStartpage() {
         }
       }
     });
-
-  return result;
+  console.log(result[1].start_time);
+  return result.slice(0, 10);
 }
