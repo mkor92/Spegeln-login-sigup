@@ -1,17 +1,22 @@
 
-    <%- include ("./layout/header") %> <%- include ("./layout/menu") %>
+    <%- include ("./layout/header") %><script src="/static/js/movies.js" defer type="module"></script> <%- include ("./layout/menu") %>
+    
 
     <main class="sec clear-main">
      
-      <%- include ("./layout/accordion") %>
+     
       
       <section class="sec-cont movies">
-        <script src="/static/js/movies.js" defer></script>
-      <%- include ("./layout/render-movies")  %>
+        <h2 class="movies-h2">Visningar kommande dagar</h2>
+        <ul class="movies-list"></ul>
+        <ul class="movies-list1"></ul>
+        <ul class="movies-list2"></ul>
+        <ul class="movies-list3"></ul>
+        <ul class="movies-list4"></ul>
     
     
     </section>
-    <section class="screenigs-startpage"></section>
+    <ul class="screenigs-startpage"></ul>
     </main>
     
     <%- include ("./layout/footer") %>

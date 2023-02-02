@@ -39,6 +39,12 @@
   }
   .movies-list {
     border-top: 1px solid $second-color;
+  }
+  .movies-list,
+  .movies-list1,
+  .movies-list2,
+  .movies-list3,
+  .movies-list4 {
     display: grid;
     grid-row-gap: 20px;
     grid-template-columns: 1fr 1fr 1fr 1fr;
@@ -50,7 +56,11 @@
       max-width: 200px;
       margin: auto;
       text-align: center;
-
+      p {
+        color: $second-color;
+        margin-top: 40px;
+        font-size: 1.2rem;
+      }
       a {
         color: white;
         background-color: rgba($first-color, 0.4);
@@ -58,17 +68,12 @@
         margin: 0px, auto;
       }
 
-      p {
-        color: $second-color;
-        margin-top: -40px;
-        margin-left: 5px;
-
-        span {
-          background-color: rgba(0, 0, 0, 0.5);
-          border-radius: 5px;
-          padding: 4px;
-        }
+      span {
+        background-color: rgba(0, 0, 0, 0.5);
+        border-radius: 5px;
+        padding: 4px;
       }
+
       img {
         display: block;
         border: 1px solid $second-color;

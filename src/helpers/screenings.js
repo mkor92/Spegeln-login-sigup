@@ -32,16 +32,16 @@ export async function screeningsStartpage() {
 
         const theDate = new Date(startDate);
         while (theDate < new Date(endDate)) {
-          dates = [...dates, new Date(theDate).toISOString().split("T")[0]];
+          dates = [...dates, new Date(theDate).toLocaleDateString()];
           theDate.setDate(theDate.getDate() + 1);
         }
-        dates = [...dates, new Date(endDate).toISOString().split("T")[0]];
+        dates = [...dates, new Date(endDate).toLocaleDateString()];
         return dates;
       };
-      const start = new Date().toISOString().split("T")[0];
-      const end = new Date(new Date().getTime() + 4 * 24 * 60 * 60 * 1000)
-        .toISOString()
-        .split("T")[0];
+      const start = new Date().toLocaleDateString();
+      const end = new Date(
+        new Date().getTime() + 4 * 24 * 60 * 60 * 1000
+      ).toLocaleDateString();
       for (let i = 0; i < getDatesBetweenDates(start, end).length; i++) {
         if (
           screenings.start_time.includes(getDatesBetweenDates(start, end)[i])
@@ -50,6 +50,6 @@ export async function screeningsStartpage() {
         }
       }
     });
-  console.log(result[1].start_time);
+
   return result.slice(0, 10);
 }
