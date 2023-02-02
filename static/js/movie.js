@@ -51,10 +51,9 @@ data2.then((data) => {
                 <div>
                     <h3>Betyg ${rating}</h3>
                     <p>${comment}</p>
-                    <p>${author}</p>
+                    <p class="review-author">${author}</p>
                             
-                </div>
-               
+                </div>   
             </li>
             `;
   });
