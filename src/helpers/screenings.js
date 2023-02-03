@@ -39,9 +39,7 @@ export async function screeningsStartpage() {
         return dates;
       };
       const start = new Date().toLocaleDateString();
-      const end = new Date(
-        new Date().getTime() + 4 * 24 * 60 * 60 * 1000
-      ).toLocaleDateString();
+      const end = new Date(new Date().getTime() + 4 * 24 * 60 * 60 * 1000).toLocaleDateString();
       for (let i = 0; i < getDatesBetweenDates(start, end).length; i++) {
         if (screenings.start_time.includes(getDatesBetweenDates(start, end)[i])) {
           return true;
