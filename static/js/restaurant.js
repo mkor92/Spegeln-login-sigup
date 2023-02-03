@@ -1,1 +1,0 @@
-// Dynamic changing from booking table and see our menu content on restaurant page 

@@ -14,45 +14,50 @@ const data = getScreenings();
 
 data.then((data) => {
   data.forEach((screening) => {
-    const date = new Date();
+    const time = screening.start_time.split("T")[1].split(":00.")[0];
+    const date = screening.start_time.split("T")[0];
+    const movie = screening.movie;
     function addDayToCurrentDate(days) {
       let currentDate = new Date();
       return new Date(currentDate.setDate(currentDate.getDate() + days));
     }
+
     const li = document.createElement("li");
-    li.innerHTML = `<p class="date">${
-      screening.start_time.split("T")[1].split(":00.")[0]
-    }</p><a href="/movies/${screening.movie.id}"><img src="${
-      screening.movie.image.url
-    }" /></a>`;
+    li.innerHTML = `<p class="date">${date}</p>
+    <a href="/movies/${movie.id}">
+    <p class="time">${time}</p>
+    <img src="${movie.image.url}"/>
+    ${movie.title.slice(0, 17)}</a>`;
+
     switch (true) {
-      case screening.start_time.includes(date.toLocaleDateString()):
+      case date.includes(new Date().toLocaleDateString()):
         li.classList.add("movies-list-item");
         ul.appendChild(li);
+
         break;
-      case screening.start_time.includes(
-        addDayToCurrentDate(1).toLocaleDateString()
-      ):
+
+      case date.includes(addDayToCurrentDate(1).toLocaleDateString()):
         li.classList.add("movies-list-item");
-        ul1.append(li);
+        ul1.appendChild(li);
+
         break;
-      case screening.start_time.includes(
-        addDayToCurrentDate(2).toLocaleDateString()
-      ):
+
+      case date.includes(addDayToCurrentDate(2).toLocaleDateString()):
         li.classList.add("movies-list-item");
-        ul2.append(li);
+        ul2.appendChild(li);
+
         break;
-      case screening.start_time.includes(
-        addDayToCurrentDate(3).toLocaleDateString()
-      ):
+
+      case date.includes(addDayToCurrentDate(3).toLocaleDateString()):
         li.classList.add("movies-list-item");
-        ul3.append(li);
+        ul3.appendChild(li);
+
         break;
-      case screening.start_time.includes(
-        addDayToCurrentDate(4).toLocaleDateString()
-      ):
+
+      case date.includes(addDayToCurrentDate(4).toLocaleDateString()):
         li.classList.add("movies-list-item");
-        ul4.append(li);
+        ul4.appendChild(li);
+
         break;
     }
   });
