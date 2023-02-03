@@ -143,6 +143,40 @@
   }
 }
 
+.screenings {
+  display: block;
+  margin-top: 5vh;
+  margin-bottom: 10vh;
+
+  >h2 {
+    color: $second-color;
+    margin-bottom: 1rem;
+  }
+
+  >li {
+    list-style: none;
+    margin-bottom: 1rem;
+    background-color: rgb(207, 207, 207);
+    border-radius: .5rem;
+    padding: .5rem 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+        
+    &:last-child {
+      margin-bottom: 0;
+    }
+
+    >button {
+      cursor: pointer;
+      background-color: $default-red;
+      color: $second-color;
+      border: none;
+      border-radius: .5rem;
+      padding: .6rem 1rem;
+    }
+  }
+}
 @media screen and (max-width: 950px) {
   .movies {
     max-width: 100vw;

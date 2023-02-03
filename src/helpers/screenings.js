@@ -43,9 +43,7 @@ export async function screeningsStartpage() {
         new Date().getTime() + 4 * 24 * 60 * 60 * 1000
       ).toLocaleDateString();
       for (let i = 0; i < getDatesBetweenDates(start, end).length; i++) {
-        if (
-          screenings.start_time.includes(getDatesBetweenDates(start, end)[i])
-        ) {
+        if (screenings.start_time.includes(getDatesBetweenDates(start, end)[i])) {
           return true;
         }
       }

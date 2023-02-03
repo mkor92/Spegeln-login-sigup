@@ -1,16 +1,17 @@
 <%- include ("./layout/header") %> <%- include ("./layout/menu") %>
-    <main class="sec">
-      <article class="movie sec-cont">
-        <div>
+  <script src="/static/js/movie.js" defer></script>
+  <main class="sec">
+    <article class="movie sec-cont">
+      <div>
         <h1 class="title"><%- title %></h1>
       </div>
-        <div class="movie-text">
-          <img src="<%- image %>" alt="movie image" class="movie-img">
+      <div class="movie-text">
+        <img src="<%- image %>" alt="movie image" class="movie-img">
         <p class="intro"><%- intro %></p>
       </div>
-      </article>
-    </main>
-    <%- include ("./layout/footer") %>
-  
-  </body>
-  </html>
+    </article>
+    <section class="screenings sec-cont"></section>
+  </main>
+<%- include ("./layout/footer") %>
+</body>
+</html>

@@ -1,9 +1,5 @@
 import { loadMovies } from "../helpers/movies.js";
-import {
-  getAllScreenings,
-  movieScreenings,
-  screeningsStartpage,
-} from "../helpers/screenings.js";
+import { getAllScreenings, movieScreenings, screeningsStartpage } from "../helpers/screenings.js";
 const apiCtrl = {};
 
 apiCtrl.movies = async (req, res) => {
