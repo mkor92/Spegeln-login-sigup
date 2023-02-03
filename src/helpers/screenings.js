@@ -43,9 +43,7 @@ export async function screeningsStartpage() {
         .toISOString()
         .split("T")[0];
       for (let i = 0; i < getDatesBetweenDates(start, end).length; i++) {
-        if (
-          screenings.start_time.includes(getDatesBetweenDates(start, end)[i])
-        ) {
+        if (screenings.start_time.includes(getDatesBetweenDates(start, end)[i])) {
           return true;
         }
       }
