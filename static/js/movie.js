@@ -1,3 +1,4 @@
+const reviewContainer = document.querySelector(".review-container");
 const screeningUI = document.querySelector('.screenings');
 const path = window.location.pathname;
 
@@ -25,3 +26,33 @@ const path = window.location.pathname;
     });
     screeningUI.insertAdjacentHTML('beforeend', template)
 })();
+
+async function getReviews() {
+  const id = path.split("/").pop();
+  const res = await fetch(`/api/reviews/${id}`);
+  const data = await res.json();
+  return data;
+}
+
+const data2 = getReviews();
+
+data2.then((data) => {
+  let template = "<h2>Recensioner</h2>";
+  data.map((review) => {
+    let rating = review.attributes.rating;
+    let comment = review.attributes.comment;
+    let author = review.attributes.author;
+
+    template += `
+            <li>
+                <div>
+                    <h3>Betyg ${rating}</h3>
+                    <p>${comment}</p>
+                    <p class="review-author">${author}</p>
+                            
+                </div>   
+            </li>
+            `;
+  });
+  reviewContainer.insertAdjacentHTML("beforeend", template);
+});

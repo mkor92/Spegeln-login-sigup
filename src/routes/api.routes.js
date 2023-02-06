@@ -12,6 +12,8 @@ router.get('/', (req, res) => {
 router.get('/movies', apiCtrl.movies);
 router.get('/movies/:id/screenings', apiCtrl.movieScreenings);
 router.get('/movies/screenings', apiCtrl.screenings);
+router.get('/reviews', apiCtrl.reviews);
+router.get('/reviews/:id', apiCtrl.movieReviews);
 router.get('*', (req, res)=> {
     res.json({
         message: "not-found"

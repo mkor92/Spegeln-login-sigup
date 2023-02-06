@@ -829,6 +829,26 @@ header nav menu .active {
   padding: 0.6rem 1rem;
 }
 
+.review-container {
+  display: block;
+  margin-top: 5vh;
+  margin-bottom: 10vh;
+}
+.review-container > h2 {
+  color: white;
+  margin-bottom: 1rem;
+}
+.review-container > li {
+  list-style: none;
+  margin-bottom: 1rem;
+  background-color: rgb(207, 207, 207);
+  border-radius: 0.5rem;
+  padding: 0.5rem 1.5rem;
+}
+.review-container .review-author {
+  text-align: right;
+}
+
 @media screen and (max-width: 950px) {
   .movies {
     max-width: 100vw;
