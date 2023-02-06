@@ -5,8 +5,9 @@ const router = Router();
 
 router.get("/movies", apiCtrl.movies);
 router.get("/movies/:id/screenings", apiCtrl.movieScreenings);
-router.get("/screenings", apiCtrl.screenings);
-router.get("/screenings/startpage", apiCtrl.screeningsStartpage);
+router.get("/movies/screenings", apiCtrl.screenings);
+router.get("/reviews", apiCtrl.reviews);
+router.get("/reviews/:id", apiCtrl.movieReviews);
 router.get("*", (req, res) => {
   res
     .json({
@@ -14,4 +15,5 @@ router.get("*", (req, res) => {
     })
     .status(404);
 });
+
 export default router;
