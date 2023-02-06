@@ -32,14 +32,17 @@ export async function screeningsStartpage() {
 
         const theDate = new Date(startDate);
         while (theDate < new Date(endDate)) {
-          dates = [...dates, new Date(theDate).toLocaleDateString()];
+          dates = [...dates, new Date(theDate).toISOString().split("T")[0]];
           theDate.setDate(theDate.getDate() + 1);
         }
-        dates = [...dates, new Date(endDate).toLocaleDateString()];
+        dates = [...dates, new Date(endDate).toISOString().split("T")[0]];
         return dates;
       };
-      const start = new Date().toLocaleDateString();
-      const end = new Date(new Date().getTime() + 4 * 24 * 60 * 60 * 1000).toLocaleDateString();
+      const start = new Date().toISOString().split("T")[0];
+      const end = new Date(new Date().getTime() + 4 * 24 * 60 * 60 * 1000)
+        .toISOString()
+        .split("T")[0];
+      console.log(getDatesBetweenDates(start, end));
       for (let i = 0; i < getDatesBetweenDates(start, end).length; i++) {
         if (screenings.start_time.includes(getDatesBetweenDates(start, end)[i])) {
           return true;
