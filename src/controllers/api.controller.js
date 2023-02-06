@@ -20,6 +20,7 @@ apiCtrl.screenings = async (req, res) => {
 apiCtrl.movieReviews = async (req, res) => {
     res.json(await loadMovieReviews(req.params.id));
 }
+
 apiCtrl.reviews = async (req, res) => {
     res.json(await loadAllReviews());
 }
