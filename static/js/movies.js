@@ -11,16 +11,19 @@ async function getScreenings() {
   return data;
 }
 const data = getScreenings();
-console.log(new Date().toISOString());
+
 data.then((data) => {
-  console.log(data);
   data.forEach((screening) => {
     const time = screening.start_time.split("T")[1].split(":00.")[0];
     const date = screening.start_time.split("T")[0];
     const movie = screening.movie;
+
     function addDayToCurrentDate(days) {
       let currentDate = new Date();
-      return new Date(currentDate.setDate(currentDate.getDate() + days));
+
+      return new Date(currentDate.setDate(currentDate.getDate() + days))
+        .toISOString()
+        .split("T")[0];
     }
 
     const li = document.createElement("li");
@@ -31,31 +34,31 @@ data.then((data) => {
     ${movie.title.slice(0, 17)}</a>`;
 
     switch (true) {
-      case date.includes(new Date().toLocaleDateString()):
+      case date.includes(new Date().toISOString().split("T")[0]):
         li.classList.add("movies-list-item");
         ul.appendChild(li);
 
         break;
 
-      case date.includes(addDayToCurrentDate(1).toLocaleDateString()):
+      case date.includes(addDayToCurrentDate(1)):
         li.classList.add("movies-list-item");
         ul1.appendChild(li);
 
         break;
 
-      case date.includes(addDayToCurrentDate(2).toLocaleDateString()):
+      case date.includes(addDayToCurrentDate(2)):
         li.classList.add("movies-list-item");
         ul2.appendChild(li);
 
         break;
 
-      case date.includes(addDayToCurrentDate(3).toLocaleDateString()):
+      case date.includes(addDayToCurrentDate(3)):
         li.classList.add("movies-list-item");
         ul3.appendChild(li);
 
         break;
 
-      case date.includes(addDayToCurrentDate(4).toLocaleDateString()):
+      case date.includes(addDayToCurrentDate(4)):
         li.classList.add("movies-list-item");
         ul4.appendChild(li);
 
