@@ -27,9 +27,11 @@ const path = window.location.pathname;
     screeningUI.insertAdjacentHTML('beforeend', template)
 })();
 
+let page = 1;
+
 async function getReviews() {
   const id = path.split("/").pop();
-  const res = await fetch(`/api/reviews/${id}`);
+  const res = await fetch(`/api/reviews/${id}&pagination[page]=${page}&pagination[pageSize]=5`);
   const data = await res.json();
   return data;
 }
@@ -48,11 +50,54 @@ data2.then((data) => {
                 <div>
                     <h3>Betyg ${rating}</h3>
                     <p>${comment}</p>
-                    <p class="review-author">${author}</p>
-                            
-                </div>   
+                    <p class="review-author">${author}</p>           
+                </div> 
             </li>
             `;
   });
   reviewContainer.insertAdjacentHTML("beforeend", template);
+  reviewContainer.insertAdjacentHTML("beforeend", `<button>previous</button>
+  <button class="next-btn">next</button> `);
+
+  const nextBtn = document.querySelector(".next-btn");
+  nextBtn.addEventListener("click", nextReviewPage);
 });
+
+async function nextReviewPage() {
+    const id = path.split('/').pop();
+    page++
+    const res = await fetch(`/api/reviews/${id}&pagination[page]=${page}&pagination[pageSize]=5`);
+    const data = await res.json();
+    
+    renderNextPage(data);
+  }
+
+  function renderNextPage(data) {
+    reviewContainer.innerHTML = "";
+    let template = "<h2>Recensioner</h2>";
+  data.map((review) => {
+    let rating = review.attributes.rating;
+    let comment = review.attributes.comment;
+    let author = review.attributes.author;
+
+    template += `
+            <li>
+                <div>
+                    <h3>Betyg ${rating}</h3>
+                    <p>${comment}</p>
+                    <p class="review-author">${author}</p>           
+                </div> 
+            </li>
+            `;
+  });
+  reviewContainer.insertAdjacentHTML("beforeend", template);
+  reviewContainer.insertAdjacentHTML("beforeend", `<button>previous</button>
+  <button class="next-btn">next</button> `);
+
+  const nextBtn = document.querySelector(".next-btn");
+  nextBtn.addEventListener("click", nextReviewPage);
+};
+
+  
+ 
+  
