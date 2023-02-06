@@ -1,34 +1,31 @@
-const ui = document.querySelector(".screenings");
 const reviewContainer = document.querySelector(".review-container");
+const screeningUI = document.querySelector('.screenings');
 const path = window.location.pathname;
 
-async function getScreenings() {
-  const id = path.split("/").pop();
-  const res = await fetch(`/api/movies/${id}/screenings`);
-  const data = await res.json();
-  return data;
-}
+(async () => {
+    const id = path.split('/').pop();
+    const res = await fetch(`/api/movies/${id}/screenings`);
+    const data = await res.json();
 
-const data = getScreenings();
+    let template = '<h2>Filmvisningar</h2>';
+    data.map(screening => {
+        const room = screening.attributes.room;
+        let date = new Date(screening.attributes.start_time).toLocaleString();
+        date = date.substring(0, date.length - 3);
+        date = date.split(' ');
 
-data.then((data) => {
-  let template = "<h2>Filmvisningar</h2>";
-  data.map((screening) => {
-    const date = new Date(screening.attributes.start_time);
-    const room = screening.attributes.room;
-
-    template += `
-            <li>
-                <div>
-                    <h3>${room}</h3>
-                    <p>${date.toLocaleString()}</p>
-                </div>
-                <button>Boka</button>
-            </li>
-            `;
-  });
-  ui.insertAdjacentHTML("beforeend", template);
-});
+        template += `
+        <li>
+            <div>
+                <h3>${room}</h3>
+                <p>${date[0]}<span style="margin-left: 1rem;">${date[1]}</span></p>
+            </div>
+            <button>Boka</button>
+        </li>
+        `;
+    });
+    screeningUI.insertAdjacentHTML('beforeend', template)
+})();
 
 async function getReviews() {
   const id = path.split("/").pop();
