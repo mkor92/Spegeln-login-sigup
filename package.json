@@ -8,7 +8,6 @@
     "start": "node index.js",
     "dev": "concurrently --kill-others \"npm run dev:server\" \"npm run sass:watch\" ",
     "test": "cross-env NODE_OPTIONS=--experimental-vm-modules npx jest",
-    
     "dev:server": "nodemon index.js",
     "sass:build": "sass --no-source-map src/sass/main.scss static/css/main.css --style compressed",
     "sass:watch": "sass --no-source-map --watch src/sass/main.scss static/css/main.css"

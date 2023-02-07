@@ -32,43 +32,70 @@
   .movies-h2 {
     margin: 20px 0px 10px;
     color: $second-color;
-    padding: 0.5rem;
-    background-color: rgba($first-color, 0.2);
-    width: fit-content;
-    border-radius: 0.5rem;
+
+    width: 100%;
+
+    border-bottom: 1px solid $second-color;
   }
   .movies-list {
-    border-top: 1px solid $second-color;
+    margin-top: 3rem;
+  }
+  .movies-list,
+  .movies-list1,
+  .movies-list2,
+  .movies-list3,
+  .movies-list4 {
     display: grid;
     grid-row-gap: 20px;
     grid-template-columns: 1fr 1fr 1fr 1fr;
     list-style: none;
     padding-top: 50px;
     margin-bottom: 50px;
+    li:nth-child(2) .date,
+    li:nth-child(3) .date,
+    li:nth-child(4) .date,
+    li:nth-child(5) .date,
+    li:nth-child(6) .date,
+    li:nth-child(7) .date {
+      display: none;
+    }
 
     .movies-list-item {
       max-width: 200px;
       margin: auto;
       text-align: center;
 
+      .date {
+        color: $second-color;
+        background-color: rgba($first-color, 0.4);
+        font-size: 1.5rem;
+        margin-top: -60px;
+        border-radius: 0.5rem;
+        padding: 0.2rem;
+        position: absolute;
+      }
       a {
         color: white;
         background-color: rgba($first-color, 0.4);
         border-radius: 0.2rem;
         margin: 0px, auto;
-      }
 
-      p {
-        color: $second-color;
-        margin-top: -40px;
-        margin-left: 5px;
-
-        span {
-          background-color: rgba(0, 0, 0, 0.5);
-          border-radius: 5px;
-          padding: 4px;
+        p {
+          background-color: rgba($first-color, 0.4);
+          position: absolute;
+          z-index: 999;
+          font-size: 1.3rem;
+          border-bottom-right-radius: 5px;
+          margin: 0.2rem;
         }
       }
+
+      span {
+        background-color: rgba(0, 0, 0, 0.5);
+        border-radius: 5px;
+        padding: 4px;
+      }
+
       img {
         display: block;
         border: 1px solid $second-color;
@@ -178,7 +205,11 @@
 @media screen and (max-width: 950px) {
   .movies {
     max-width: 100vw;
-    .movies-list {
+    .movies-list,
+    .movies-list1,
+    .movies-list2,
+    .movies-list3,
+    .movies-list4 {
       grid-template-columns: 1fr 1fr 1fr;
 
       img {
@@ -196,7 +227,11 @@
     div {
       display: block;
     }
-    .movies-list {
+    .movies-list,
+    .movies-list1,
+    .movies-list2,
+    .movies-list3,
+    .movies-list4 {
       grid-template-columns: 1fr 1fr;
 
       img {
