@@ -59,9 +59,11 @@ data2.then((data) => {
   reviewContainer.insertAdjacentHTML("beforeend", template);
   reviewContainer.insertAdjacentHTML(
     "beforeend",
-    `<button class="next-btn">Nästa</button> `
+    `<div class="review-btn-container">
+    <button class="next-btn">Nästa</button>
+    <div> 
+    `
   );
-
   const nextBtn = document.querySelector(".next-btn");
   nextBtn.addEventListener("click", nextReviewPage);
  
@@ -97,8 +99,11 @@ function renderNextPage(data) {
   reviewContainer.insertAdjacentHTML("beforeend", template);
   reviewContainer.insertAdjacentHTML(
     "beforeend",
-    `<button class="previous-btn">Föregående</button>
-<button class="next-btn">Nästa</button> `
+    `<div class="review-btn-container">
+    <button class="previous-btn">Föregående</button>
+    <button class="next-btn">Nästa</button>
+    <div> 
+     `
   );
 
   const nextBtn = document.querySelector(".next-btn");
@@ -138,8 +143,12 @@ function renderNextPage(data) {
   reviewContainer.insertAdjacentHTML("beforeend", template);
   reviewContainer.insertAdjacentHTML(
     "beforeend",
-    `<button class="previous-btn">Föregående</button>
-<button class="next-btn">Nästa</button> `
+    `
+    <div class="review-btn-container">
+    <button class="previous-btn">Föregående</button>
+    <button class="next-btn">Nästa</button>
+    <div>
+    `
   );
 
   const nextBtn = document.querySelector(".next-btn");
