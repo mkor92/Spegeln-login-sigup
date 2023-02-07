@@ -27,11 +27,11 @@ const movieId = path.split("/").pop();
   screeningUI.insertAdjacentHTML("beforeend", template);
 })();
 
-let page = 1;
+let reviewPage = 1;
 
 async function getReviews() {
   const res = await fetch(
-    `/api/reviews/${movieId}?page=${page}`
+    `/api/reviews/${movieId}?page=${reviewPage}`
   );
   const data = await res.json();
   return data;
@@ -70,9 +70,9 @@ data2.then((data) => {
 });
 
 async function nextReviewPage() {
-  page++; 
+  reviewPage++; 
   const res = await fetch(
-    `/api/reviews/${movieId}?page=${page}`
+    `/api/reviews/${movieId}?page=${reviewPage}`
   );
   const data = await res.json(); 
   renderNextPage(data);
@@ -113,9 +113,9 @@ function renderNextPage(data) {
 }
 
 async function previousReviewPage() {
-  page--;
+  reviewPage--;
   const res = await fetch(
-    `/api/reviews/${movieId}?page=${page}`
+    `/api/reviews/${movieId}?page=${reviewPage}`
   );
   const data = await res.json();
 
