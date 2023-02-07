@@ -1,10 +1,10 @@
 const reviewContainer = document.querySelector(".review-container");
 const screeningUI = document.querySelector(".screenings");
 const path = window.location.pathname;
+const movieId = path.split("/").pop();
 
 (async () => {
-  const id = path.split("/").pop();
-  const res = await fetch(`/api/movies/${id}/screenings`);
+  const res = await fetch(`/api/movies/${movieId}/screenings`);
   const data = await res.json();
 
   let template = "<h2>Filmvisningar</h2>";
@@ -30,9 +30,8 @@ const path = window.location.pathname;
 let page = 1;
 
 async function getReviews() {
-  const id = path.split("/").pop();
   const res = await fetch(
-    `/api/reviews/${id}&pagination[page]=${page}&pagination[pageSize]=5`
+    `/api/reviews/${movieId}&pagination[page]=${page}`
   );
   const data = await res.json();
   return data;
@@ -60,7 +59,7 @@ data2.then((data) => {
   reviewContainer.insertAdjacentHTML("beforeend", template);
   reviewContainer.insertAdjacentHTML(
     "beforeend",
-    `<button class="next-btn">next</button> `
+    `<button class="next-btn">Nästa</button> `
   );
 
   const nextBtn = document.querySelector(".next-btn");
@@ -69,10 +68,9 @@ data2.then((data) => {
 });
 
 async function nextReviewPage() {
-  const id = path.split("/").pop();
   page++; 
   const res = await fetch(
-    `/api/reviews/${id}&pagination[page]=${page}&pagination[pageSize]=5`
+    `/api/reviews/${movieId}&pagination[page]=${page}`
   );
   const data = await res.json(); 
   renderNextPage(data);
@@ -99,8 +97,8 @@ function renderNextPage(data) {
   reviewContainer.insertAdjacentHTML("beforeend", template);
   reviewContainer.insertAdjacentHTML(
     "beforeend",
-    `<button class="previous-btn">previous</button>
-<button class="next-btn">next</button> `
+    `<button class="previous-btn">Föregående</button>
+<button class="next-btn">Nästa</button> `
   );
 
   const nextBtn = document.querySelector(".next-btn");
@@ -110,10 +108,9 @@ function renderNextPage(data) {
 }
 
 async function previousReviewPage() {
-  const id = path.split("/").pop();
   page--;
   const res = await fetch(
-    `/api/reviews/${id}&pagination[page]=${page}&pagination[pageSize]=5`
+    `/api/reviews/${movieId}&pagination[page]=${page}`
   );
   const data = await res.json();
 
@@ -141,8 +138,8 @@ function renderNextPage(data) {
   reviewContainer.insertAdjacentHTML("beforeend", template);
   reviewContainer.insertAdjacentHTML(
     "beforeend",
-    `<button class="previous-btn">previous</button>
-<button class="next-btn">next</button> `
+    `<button class="previous-btn">Föregående</button>
+<button class="next-btn">Nästa</button> `
   );
 
   const nextBtn = document.querySelector(".next-btn");
