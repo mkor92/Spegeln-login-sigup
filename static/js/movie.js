@@ -30,9 +30,7 @@ const movieId = path.split("/").pop();
 let reviewPage = 1;
 
 async function getReviews() {
-  const res = await fetch(
-    `/api/reviews/${movieId}?page=${reviewPage}`
-  );
+  const res = await fetch(`/api/reviews/${movieId}?page=${reviewPage}`);
   const data = await res.json();
   return data;
 }
@@ -66,15 +64,12 @@ data2.then((data) => {
   );
   const nextBtn = document.querySelector(".next-btn");
   nextBtn.addEventListener("click", nextReviewPage);
- 
 });
 
 async function nextReviewPage() {
-  reviewPage++; 
-  const res = await fetch(
-    `/api/reviews/${movieId}?page=${reviewPage}`
-  );
-  const data = await res.json(); 
+  reviewPage++;
+  const res = await fetch(`/api/reviews/${movieId}?page=${reviewPage}`);
+  const data = await res.json();
   renderNextPage(data);
 }
 
@@ -114,9 +109,7 @@ function renderNextPage(data) {
 
 async function previousReviewPage() {
   reviewPage--;
-  const res = await fetch(
-    `/api/reviews/${movieId}?page=${reviewPage}`
-  );
+  const res = await fetch(`/api/reviews/${movieId}?page=${reviewPage}`);
   const data = await res.json();
 
   renderNextPage(data);
