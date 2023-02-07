@@ -31,7 +31,7 @@ let page = 1;
 
 async function getReviews() {
   const res = await fetch(
-    `/api/reviews/${movieId}&pagination[page]=${page}`
+    `/api/reviews/${movieId}?page=${page}`
   );
   const data = await res.json();
   return data;
@@ -72,7 +72,7 @@ data2.then((data) => {
 async function nextReviewPage() {
   page++; 
   const res = await fetch(
-    `/api/reviews/${movieId}&pagination[page]=${page}`
+    `/api/reviews/${movieId}?page=${page}`
   );
   const data = await res.json(); 
   renderNextPage(data);
@@ -115,7 +115,7 @@ function renderNextPage(data) {
 async function previousReviewPage() {
   page--;
   const res = await fetch(
-    `/api/reviews/${movieId}&pagination[page]=${page}`
+    `/api/reviews/${movieId}?page=${page}`
   );
   const data = await res.json();
 
