@@ -1,19 +1,27 @@
 const reviewContainer = document.querySelector(".review-container");
 const screeningUI = document.querySelector('.screenings');
 const path = window.location.pathname;
+const movieId = path.split('/').pop();
 
-(async () => {
-    const id = path.split('/').pop();
-    const res = await fetch(`/api/movies/${id}/screenings`);
-    const data = await res.json();
+let currentPage = 1;
+let pageCount;
 
-    let template = '<h2>Filmvisningar</h2>';
-    data.map(screening => {
+async function renderScreenings() {
+    const res = await fetch(`/api/movies/${movieId}/screenings?page=${currentPage}`);
+    const payload = await res.json();
+    const page = payload.meta.pagination.page;
+    pageCount = payload.meta.pagination.pageCount;
+
+    // Adds the header
+    let template = `<h2>Filmvisningar ${pageCount > 1 ? `<span>Sida: ${page} av ${pageCount}</span></h2>` : `</h2>`}`;
+
+    payload.data.map(screening => {
         const room = screening.attributes.room;
         let date = new Date(screening.attributes.start_time).toLocaleString();
         date = date.substring(0, date.length - 3);
         date = date.split(' ');
 
+        // Adds the screenings
         template += `
         <li>
             <div>
@@ -21,15 +29,42 @@ const path = window.location.pathname;
                 <p>${date[0]}<span style="margin-left: 1rem;">${date[1]}</span></p>
             </div>
             <button>Boka</button>
-        </li>
-        `;
+        </li>`;
     });
+
+    // Adds next and before buttons
+    template += `
+        ${pageCount > 1 ? 
+            `<div class="btns">
+                <button onclick="before()">Föregående</button>
+                <button onclick="next()">Nästa</button>
+            </div>` 
+            : ``
+        }
+    `;
     screeningUI.insertAdjacentHTML('beforeend', template)
-})();
+}
+renderScreenings();
+
+function next() {
+    currentPage >= pageCount ? currentPage = 1 : currentPage++;
+    screeningUI.style.height = `${screeningUI.offsetHeight}px`;
+    screeningUI.classList.add('screeningsAnim');
+    setTimeout(() => { screeningUI.classList.remove('screeningsAnim')}, 900)
+    screeningUI.innerHTML = '';
+    renderScreenings();
+}
+function before() {
+    currentPage <= 1 ? currentPage = pageCount : currentPage--;
+    screeningUI.style.height = `${screeningUI.offsetHeight}px`;
+    screeningUI.classList.add('screeningsAnim');
+    setTimeout(() => { screeningUI.classList.remove('screeningsAnim')}, 900)
+    screeningUI.innerHTML = '';
+    renderScreenings()
+}
 
 async function getReviews() {
-  const id = path.split("/").pop();
-  const res = await fetch(`/api/reviews/${id}`);
+  const res = await fetch(`/api/reviews/${movieId}`);
   const data = await res.json();
   return data;
 }

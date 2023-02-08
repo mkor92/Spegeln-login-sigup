@@ -5,7 +5,7 @@ const router = Router();
 
 router.get("/movies", apiCtrl.movies);
 router.get("/movies/:id/screenings", apiCtrl.movieScreenings);
-router.get("/movies/screenings", apiCtrl.screenings);
+router.get("/screenings", apiCtrl.getAllScreenings);
 router.get("/screenings/startpage", apiCtrl.startpageScreenings);
 router.get("/reviews", apiCtrl.reviews);
 router.get("/reviews/:id", apiCtrl.movieReviews);
