@@ -14,10 +14,14 @@ apiCtrl.startpageScreenings = async (req, res) => {
 };
 
 apiCtrl.movieScreenings = async (req, res) => {
-  res.json(await movieScreenings(req.params.id));
+  if(!req.query.page) {
+      res.json(await movieScreenings(req.params.id));
+    } else {
+    res.json(await movieScreenings(req.params.id, req.query.page))
+  }
 };
 
-apiCtrl.screenings = async (req, res) => {
+apiCtrl.getAllScreenings = async (req, res) => {
   res.json(await getAllScreenings());
 };
 
