@@ -62,9 +62,10 @@ function before() {
     screeningUI.innerHTML = '';
     renderScreenings()
 }
+let reviewPage = 1;
 
 async function getReviews() {
-  const res = await fetch(`/api/reviews/${movieId}`);
+  const res = await fetch(`/api/reviews/${movieId}?page=${reviewPage}`);
   const data = await res.json();
   return data;
 }
