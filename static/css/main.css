@@ -961,6 +961,17 @@ header nav menu .active {
 .review-container h2 {
   color: white;
   margin-bottom: 1rem;
+  display: inline-block;
+}
+.review-container .review-page {
+  margin-left: 2rem;
+  background-color: #cc0028;
+  padding: 0.5rem;
+  border-radius: 0.5rem;
+  font-weight: 500;
+  font-size: 1rem;
+  display: inline-block;
+  color: white;
 }
 .review-container li {
   list-style: none;
