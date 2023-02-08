@@ -1,3 +1,4 @@
+import apiAdapter from "../helpers/apiAdapter.js";
 import { loadMovies } from "../helpers/movies.js";
 import { loadAllReviews, loadMovieReviews } from "../helpers/reviews.js";
 
@@ -10,14 +11,14 @@ apiCtrl.movies = async (req, res) => {
 };
 
 apiCtrl.startpageScreenings = async (req, res) => {
-  res.json(await screeningsStartpage());
+  res.json(await screeningsStartpage(apiAdapter));
 };
 
 apiCtrl.movieScreenings = async (req, res) => {
-  if(!req.query.page) {
-      res.json(await movieScreenings(req.params.id));
-    } else {
-    res.json(await movieScreenings(req.params.id, req.query.page))
+  if (!req.query.page) {
+    res.json(await movieScreenings(req.params.id));
+  } else {
+    res.json(await movieScreenings(req.params.id, req.query.page));
   }
 };
 
