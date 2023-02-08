@@ -87,7 +87,7 @@ async function getReviews() {
 
 function renderFirstPage(data) {
   reviewContainer.innerHTML = "";
-  let template = "<h2>Recensioner</h2>";
+  let template = `<h2>Recensioner</h2><p>Sida: ${reviewPage} av ${reviewPageCount}</p>`;
   data.map((review) => {
     let rating = review.attributes.rating;
     let comment = review.attributes.comment;
@@ -130,7 +130,7 @@ async function nextReviewPage(data) {
 
 function renderNextPage(data) {
   reviewContainer.innerHTML = "";
-  let template = "<h2>Recensioner</h2>";
+  let template = `<h2>Recensioner</h2><p>Sida: ${reviewPage} av ${reviewPageCount}</p>`;
   data.map((review) => {
     let rating = review.attributes.rating;
     let comment = review.attributes.comment;
@@ -175,7 +175,7 @@ async function previousReviewPage() {
 
 function renderNextPage(data) {
   reviewContainer.innerHTML = "";
-  let template = "<h2>Recensioner</h2>";
+  let template = `<h2>Recensioner</h2><p>Sida: ${reviewPage} av ${reviewPageCount}</p>`;
   data.map((review) => {
     let rating = review.attributes.rating;
     let comment = review.attributes.comment;
