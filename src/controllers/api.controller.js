@@ -4,7 +4,7 @@ import { loadAllReviews, loadMovieReviews } from "../helpers/reviews.js";
 
 import { getAllScreenings, movieScreenings, screeningsStartpage } from "../helpers/screenings.js";
 
-import { loadAllRatings, loadMovieRatings } from "../helpers/ratings.js"
+import { loadMovieRatings } from "../helpers/ratings.js";
 
 const apiCtrl = {};
 
@@ -37,11 +37,7 @@ apiCtrl.reviews = async (req, res) => {
 };
 
 apiCtrl.movieRating = async (req, res) => {
-  res.json(await loadMovieRatings(req.params.id));
+  res.json(await loadMovieRatings(req.params.id, req.query));
 };
-
-apiCtrl.ratings = async (req, res) => {
-  res.json(await loadAllRatings());
-}
 
 export default apiCtrl;
