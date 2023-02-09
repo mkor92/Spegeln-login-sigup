@@ -11,7 +11,6 @@ async function getScreenings() {
   return data;
 }
 const data = getScreenings();
-
 data.then((data) => {
   data.forEach((screening) => {
     const time = screening.start_time.split("T")[1].split(":00.")[0];
