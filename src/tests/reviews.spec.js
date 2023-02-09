@@ -4,8 +4,7 @@ import { loadMovieReviews } from "../helpers/reviews.js";
 describe("loadMovieReviews()", () => {
   test("correct response format", async () => {
     const result = await loadMovieReviews(1);
-    expect(Array.isArray(result)).toBeTruthy;
-    expect(result).not.toBeUndefined();
+    expect(Array.isArray(result.data)).toBeTruthy();
     expect(result.data[0].attributes.comment).not.toBeUndefined();
     expect(result.data[0].attributes.rating).not.toBeUndefined();
     expect(result.data[0].attributes.author).not.toBeUndefined();
@@ -21,15 +20,24 @@ describe("loadMovieReviews()", () => {
     expect(result.data.length).toBeLessThan(6);
   });
 
-  test("show pagination page 2", async () => {
+  test("get pagination page 2", async () => {
     const result = await loadMovieReviews(1, 2);
     expect(result.meta.pagination.page).toEqual(2);
   });
 
-  test("it there is 5 or more reviews, get 5, else get less than 5", async () => {
+  test("get 5 or less reviews on pagination page 1", async () => {
     const result = await loadMovieReviews(1, 1);
     if (result.meta.pagination.total >= 5) {
-      expect(result.data.length).toEqual();
+      expect(result.data.length).toEqual(5);
+    } else {
+      expect(result.data.length).toBeLessThan(5);
+    }
+  });
+
+  test("get 5 or less reviews on pagination page 2", async () => {
+    const result = await loadMovieReviews(1, 2);
+    if (result.meta.pagination.total >= 10) {
+      expect(result.data.length).toEqual(5);
     } else {
       expect(result.data.length).toBeLessThan(5);
     }
