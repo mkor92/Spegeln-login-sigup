@@ -9,6 +9,8 @@ router.get("/movies/screenings", apiCtrl.screenings);
 router.get("/screenings/startpage", apiCtrl.startpageScreenings);
 router.get("/reviews", apiCtrl.reviews);
 router.get("/reviews/:id", apiCtrl.movieReviews);
+router.get("/movies/ratings,", apiCtrl.ratings)
+router.get("/movies/:id/ratings", apiCtrl.movieRating);
 router.get("*", (req, res) => {
   res
     .json({
