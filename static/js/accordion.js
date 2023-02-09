@@ -1,45 +1,49 @@
-const firstSlide = document.querySelector("#first-slide");
-const slides = document.querySelectorAll(".slide");
 const prev = document.querySelector(".prev");
 const next = document.querySelector(".next");
-
+const accordionSection = document.querySelector(".accordion-cont");
+const slider = document.createElement("div");
+slider.classList.add("slider");
 let interval;
 let margin = 0;
-let slideCount = slides.length;
+
 let currentSlide = 1;
+async function getMovies() {
+  const res = await fetch(`/api/movies`);
+  const data = await res.json();
 
-next.addEventListener("click", () => {
-  clearInterval(interval);
-  if (currentSlide >= slideCount) {
-    margin = 0;
-    currentSlide = 1;
-    anim(500);
-  } else {
-    margin -= 100;
-    currentSlide++;
-    anim(100);
-  }
-  firstSlide.style.marginLeft = `${margin}%`;
-  startInterval();
+  return data;
+}
+const data = getMovies();
+data.then((data) => {
+  data.forEach((movie) => {
+    const title = movie.attributes.title;
+    const image = movie.attributes.image.url;
+    const section = document.createElement("section");
+    const id = movie.id;
+
+    section.classList.add("slide");
+    console.log(movie.id);
+    section.innerHTML = `<div class="slide-content">
+    <h2>${title}</h2>
+    
+    <a href="/movies/${id}" class="slide-btn">Biljetter</a>
+  </div>
+  <img src="${image}" alt="movie banner" />`;
+    slider.appendChild(section);
+    accordionSection.append(slider);
+  });
 });
+const myTimeout = setTimeout(rest, 500);
 
-prev.addEventListener("click", () => {
-  clearInterval(interval);
-  if (currentSlide <= 1) {
-    currentSlide = slideCount;
-    margin = -100 * (slideCount - 1);
-    anim(500);
-  } else {
-    currentSlide--;
-    margin += 100;
-    anim(100);
-  }
-  firstSlide.style.marginLeft = `${margin}%`;
-  startInterval();
-});
+function rest() {
+  document.querySelector(".slide").id = "first-slide";
+  const firstSlide = document.querySelector("#first-slide");
+  const slides = document.querySelectorAll(".slide");
+  console.log(slides.length);
 
-function startInterval() {
-  interval = setInterval(() => {
+  let slideCount = slides.length;
+  next.addEventListener("click", () => {
+    clearInterval(interval);
     if (currentSlide >= slideCount) {
       margin = 0;
       currentSlide = 1;
@@ -47,26 +51,57 @@ function startInterval() {
     } else {
       margin -= 100;
       currentSlide++;
-      anim(150);
+      anim(100);
     }
     firstSlide.style.marginLeft = `${margin}%`;
-  }, 7000);
-}
+    startInterval();
+  });
 
-startInterval();
+  prev.addEventListener("click", () => {
+    clearInterval(interval);
+    if (currentSlide <= 1) {
+      currentSlide = slideCount;
+      margin = -100 * (slideCount - 1);
+      anim(500);
+    } else {
+      currentSlide--;
+      margin += 100;
+      anim(100);
+    }
+    firstSlide.style.marginLeft = `${margin}%`;
+    startInterval();
+  });
 
-function anim(secs) {
-  setTimeout(() => {
-    const slideContent = slides[currentSlide - 1].children[0];
-    slideContent.children[0].classList.add("header-anim");
-    slideContent.children[1].classList.add("header-anim");
-    slideContent.children[2].classList.add("btn-anim");
+  function startInterval() {
+    interval = setInterval(() => {
+      if (currentSlide >= slideCount) {
+        margin = 0;
+        currentSlide = 1;
+        anim(500);
+      } else {
+        margin -= 100;
+        currentSlide++;
+        anim(150);
+      }
+      firstSlide.style.marginLeft = `${margin}%`;
+    }, 7000);
+  }
 
+  startInterval();
+
+  function anim(secs) {
     setTimeout(() => {
       const slideContent = slides[currentSlide - 1].children[0];
-      slideContent.children[0].classList.remove("header-anim");
-      slideContent.children[1].classList.remove("header-anim");
-      slideContent.children[2].classList.remove("btn-anim");
-    }, 1000);
-  }, secs);
+      slideContent.children[0].classList.add("header-anim");
+      slideContent.children[1].classList.add("header-anim");
+      slideContent.children[2].classList.add("btn-anim");
+
+      setTimeout(() => {
+        const slideContent = slides[currentSlide - 1].children[0];
+        slideContent.children[0].classList.remove("header-anim");
+        slideContent.children[1].classList.remove("header-anim");
+        slideContent.children[2].classList.remove("btn-anim");
+      }, 1000);
+    }, secs);
+  }
 }
