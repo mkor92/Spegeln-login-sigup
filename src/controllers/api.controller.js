@@ -1,5 +1,5 @@
 import apiAdapter from "../helpers/apiAdapter.js";
-import { loadMovies } from "../helpers/movies.js";
+import { loadMovies, loadMovie } from "../helpers/movies.js";
 import { loadAllReviews, loadMovieReviews } from "../helpers/reviews.js";
 
 import { getAllScreenings, movieScreenings, screeningsStartpage } from "../helpers/screenings.js";
@@ -8,6 +8,10 @@ const apiCtrl = {};
 
 apiCtrl.movies = async (req, res) => {
   res.json(await loadMovies());
+};
+
+apiCtrl.movie = async (req, res) => {
+  res.json(await loadMovie(req.params.id));
 };
 
 apiCtrl.startpageScreenings = async (req, res) => {
