@@ -27,7 +27,7 @@ apiCtrl.getAllScreenings = async (req, res) => {
 };
 
 apiCtrl.movieReviews = async (req, res) => {
-  res.json(await loadMovieReviews(req.params.id, req.query));
+  res.json(await loadMovieReviews(req.params.id, req.query.page));
 };
 
 apiCtrl.reviews = async (req, res) => {
