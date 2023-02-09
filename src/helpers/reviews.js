@@ -2,11 +2,11 @@ import fetch from "node-fetch";
 
 const API_URL_REVIEWS = "https://plankton-app-xhkom.ondigitalocean.app/api/reviews";
 
-export async function loadMovieReviews(id, query) {
+export async function loadMovieReviews(id, page) {
   let res = "";
-  if (query.page != undefined) {
+  if (page != undefined) {
     res = await fetch(
-      `${API_URL_REVIEWS}?filters[movie]=${id}&pagination[page]=${query.page}&pagination[pageSize]=5`
+      `${API_URL_REVIEWS}?filters[movie]=${id}&pagination[page]=${page}&pagination[pageSize]=5`
     );
   } else {
     res = await fetch(`${API_URL_REVIEWS}?filters[movie]=${id}`);
