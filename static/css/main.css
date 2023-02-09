@@ -880,8 +880,29 @@ header nav menu .active {
   margin-bottom: 10vh;
 }
 .screenings > h2 {
+  padding-left: 1rem;
+  pointer-events: none;
   color: white;
-  margin-bottom: 1rem;
+  margin-bottom: 2rem;
+  position: relative;
+}
+.screenings > h2::before {
+  content: "";
+  display: block;
+  background-color: #cc0028;
+  width: 0.2rem;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+.screenings > h2 > span {
+  margin-left: 2rem;
+  background-color: #cc0028;
+  padding: 0.5rem;
+  border-radius: 0.5rem;
+  font-weight: 500;
+  font-size: 1rem;
 }
 .screenings > li {
   list-style: none;
@@ -904,17 +925,55 @@ header nav menu .active {
   border-radius: 0.5rem;
   padding: 0.6rem 1rem;
 }
+.screenings > .btns {
+  margin-top: 2rem;
+}
+.screenings > .btns button {
+  outline: none;
+  border: none;
+  font-size: 1rem;
+  border-radius: 0.5rem;
+  padding: 0.5rem 1rem;
+  background-color: #cc0028;
+  color: white;
+  cursor: pointer;
+  margin-right: 0.5rem;
+}
 
+.screeningsAnim {
+  animation: screeningLi 1s ease-in;
+}
+
+@keyframes screeningLi {
+  from {
+    pointer-events: none;
+    opacity: 0;
+  }
+  to {
+    pointer-events: all;
+    opacity: 1;
+  }
+}
 .review-container {
-  display: block;
   margin-top: 5vh;
   margin-bottom: 10vh;
 }
-.review-container > h2 {
+.review-container h2 {
   color: white;
   margin-bottom: 1rem;
+  display: inline-block;
 }
-.review-container > li {
+.review-container .review-page {
+  margin-left: 2rem;
+  background-color: #cc0028;
+  padding: 0.5rem;
+  border-radius: 0.5rem;
+  font-weight: 500;
+  font-size: 1rem;
+  display: inline-block;
+  color: white;
+}
+.review-container li {
   list-style: none;
   margin-bottom: 1rem;
   background-color: rgb(207, 207, 207);
@@ -923,6 +982,20 @@ header nav menu .active {
 }
 .review-container .review-author {
   text-align: right;
+}
+.review-container .review-btn-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.review-container .review-btn-container button {
+  cursor: pointer;
+  background-color: #cc0028;
+  color: white;
+  border: none;
+  border-radius: 0.5rem;
+  padding: 0.6rem 1rem;
+  margin: auto;
 }
 
 @media screen and (max-width: 950px) {

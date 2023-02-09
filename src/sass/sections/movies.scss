@@ -148,59 +148,137 @@
   margin-top: 5vh;
   margin-bottom: 10vh;
 
-  >h2 {
+  > h2 {
+    padding-left: 1rem;
+    pointer-events: none;
     color: $second-color;
-    margin-bottom: 1rem;
+    margin-bottom: 2rem;
+    position: relative;
+
+    &::before {
+      content: "";
+      display: block;
+      background-color: $default-red;
+      width: 0.2rem;
+      height: 100%;
+      position: absolute;
+      top: 0;
+      left: 0;
+    }
+
+    > span {
+      margin-left: 2rem;
+      background-color: $default-red;
+      padding: 0.5rem;
+      border-radius: 0.5rem;
+      font-weight: 500;
+      font-size: 1rem;
+    }
   }
 
-  >li {
+  > li {
     list-style: none;
     margin-bottom: 1rem;
     background-color: rgb(207, 207, 207);
-    border-radius: .5rem;
-    padding: .5rem 1.5rem;
+    border-radius: 0.5rem;
+    padding: 0.5rem 1.5rem;
     display: flex;
     align-items: center;
     justify-content: space-between;
-        
+
     &:last-child {
       margin-bottom: 0;
     }
 
-    >button {
+    > button {
       cursor: pointer;
       background-color: $default-red;
       color: $second-color;
       border: none;
-      border-radius: .5rem;
-      padding: .6rem 1rem;
+      border-radius: 0.5rem;
+      padding: 0.6rem 1rem;
     }
+  }
+
+  > .btns {
+    margin-top: 2rem;
+    button {
+      outline: none;
+      border: none;
+      font-size: 1rem;
+      border-radius: 0.5rem;
+      padding: 0.5rem 1rem;
+      background-color: $default-red;
+      color: $second-color;
+      cursor: pointer;
+      margin-right: 0.5rem;
+    }
+  }
+}
+
+.screeningsAnim {
+  animation: screeningLi 1s ease-in;
+}
+
+@keyframes screeningLi {
+  from {
+    pointer-events: none;
+    opacity: 0;
+  }
+  to {
+    pointer-events: all;
+    opacity: 1;
   }
 }
 
 .review-container {
-  display: block;
   margin-top: 5vh;
   margin-bottom: 10vh;
 
-  >h2 {
+  h2 {
     color: $second-color;
     margin-bottom: 1rem;
+    display: inline-block;
   }
 
-  >li {
+  .review-page {
+    margin-left: 2rem;
+    background-color: $default-red;
+    padding: 0.5rem;
+    border-radius: 0.5rem;
+    font-weight: 500;
+    font-size: 1rem;
+    display: inline-block;
+    color: white;
+  }
+
+  li {
     list-style: none;
     margin-bottom: 1rem;
     background-color: rgb(207, 207, 207);
-    border-radius: .5rem;
-    padding: .5rem 1.5rem;        
+    border-radius: 0.5rem;
+    padding: 0.5rem 1.5rem;
+  }
+  .review-author {
+    text-align: right;
+  }
+
+  .review-btn-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    button {
+      cursor: pointer;
+      background-color: $default-red;
+      color: $second-color;
+      border: none;
+      border-radius: 0.5rem;
+      padding: 0.6rem 1rem;
+      margin: auto;
     }
-    .review-author {
-      text-align: right;
-    }
+  }
 }
-
-
 
 @media screen and (max-width: 950px) {
   .movies {
