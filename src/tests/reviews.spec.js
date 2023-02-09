@@ -10,7 +10,7 @@ describe("loadMovieReviews()", () => {
     expect(result.data[0].attributes.author).not.toBeUndefined();
   });
 
-  test("only 1 pagination page when page parameter is empty", async () => {
+  test("return all reviews when page parameter is empty", async () => {
     const result = await loadMovieReviews(1);
     expect(result.meta.pagination.page).toEqual(1);
   });
