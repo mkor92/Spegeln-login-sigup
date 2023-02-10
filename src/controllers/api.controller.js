@@ -37,7 +37,7 @@ apiCtrl.reviews = async (req, res) => {
 };
 
 apiCtrl.movieRating = async (req, res) => {
-  res.json(await loadMovieRatings(req.params.id, req.query));
+  res.json(await loadMovieRatings(req.params.id));
 };
 
 export default apiCtrl;
