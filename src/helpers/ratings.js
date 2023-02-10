@@ -6,8 +6,10 @@ const IMDB_API= "https://www.omdbapi.com/?apikey=81d6c4d0"
 export async function loadMovieRatings(id) {
   const res = await fetch(`${API_REVIEWS}?filters[movie]=${id}&populate=movie`);
   const payload = await res.json();
+  const imdbMovieId = payload.data[0].attributes.movie.data.attributes.imdbId;
 
   const result = payload.data.map(review => (review.attributes.rating));
+
   if (result.length >= 5) {
     let sum = result.reduce((a, b) => {
       return a + b
@@ -15,11 +17,12 @@ export async function loadMovieRatings(id) {
 
     let tempResult = sum / result.length;
     let finalResult = Math.round(tempResult * 10) / 10;
-
     console.log(finalResult);
+    return result;
   } else {
-    console.log("IMDB-betyg");
+    const res = await fetch(`${IMDB_API}&i=${imdbMovieId}`)
+    const payload = await res.json();
+    console.log(payload.imdbRating);
+    return payload.imdbRating
   }
-  return result;
-    
 }
