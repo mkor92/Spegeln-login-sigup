@@ -6,7 +6,8 @@
   "type": "module",
   "scripts": {
     "start": "node index.js",
-    "dev": "concurrently --kill-others \"npm run dev:server\" \"npm run sass:watch\" ",
+    "dev": "concurrently --kill-others \"npm run dev:server\" \"npm run sass:watch\" \"npm run sass:watch\" ",
+    "build": "npm run sass:build",
     "test": "cross-env NODE_OPTIONS=--experimental-vm-modules npx jest",
     "dev:server": "nodemon index.js",
     "sass:build": "sass --no-source-map src/sass/main.scss static/css/main.css --style compressed",
