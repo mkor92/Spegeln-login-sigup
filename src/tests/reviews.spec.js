@@ -12,7 +12,11 @@ describe("loadMovieReviews()", () => {
 
   test("return all reviews when page parameter is empty", async () => {
     const result = await loadMovieReviews(1);
-    expect(result.meta.pagination.page).toEqual(1);
+    if(result.meta.pagination.total <= 25){
+      expect(result.meta.pagination.pageCount).toEqual(1);
+    } else {
+      expect(result.meta.pagination.pageCount).toBeGreaterThan(1);
+    } 
   });
 
   test("get less than 5 reviews", async () => {
