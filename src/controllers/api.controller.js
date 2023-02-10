@@ -2,7 +2,7 @@ import apiAdapter from "../helpers/apiAdapter.js";
 import { loadMovies } from "../helpers/movies.js";
 import { loadAllReviews, loadMovieReviews } from "../helpers/reviews.js";
 
-import { getAllScreenings, movieScreenings, screeningsStartpage } from "../helpers/screenings.js";
+import { getAllScreenings, getMovieScreenings, screeningsStartpage } from "../helpers/screenings.js";
 
 const apiCtrl = {};
 
@@ -16,9 +16,9 @@ apiCtrl.startpageScreenings = async (req, res) => {
 
 apiCtrl.movieScreenings = async (req, res) => {
   if (!req.query.page) {
-    res.json(await movieScreenings(req.params.id));
+    res.json(await getMovieScreenings(apiAdapter, req.params.id));
   } else {
-    res.json(await movieScreenings(req.params.id, req.query.page));
+    res.json(await getMovieScreenings(apiAdapter, req.params.id, req.query.page));
   }
 };
 

@@ -8,12 +8,21 @@ export async function getAllScreenings() {
   return payload.data;
 }
 
-export async function movieScreenings(movieId, page = 1) {
-  const res = await fetch(
-    `${API}?pagination[page]=${page}&pagination[pageSize]=5&filters[movie]=${movieId}`
-  );
-  const payload = await res.json();
-  return payload;
+export async function getMovieScreenings(apiAdapter, movieId, page = 'all') {
+  const payload = await apiAdapter.getMovieScreenings(movieId, page);
+  const meta = payload.meta;
+  const data = payload.data.map(screening => ({
+    id: screening.id,
+    attributes:  {
+      ...screening.attributes,
+      start_time: {
+        date: screening.attributes.start_time.split("T")[0],
+        time: screening.attributes.start_time.split("T")[1].substring(0, screening.attributes.start_time.split("T")[1].length - 8)
+      },
+    }
+  }));
+
+  return { data, meta }
 }
 
 export async function screeningsStartpage(apiAdapter) {

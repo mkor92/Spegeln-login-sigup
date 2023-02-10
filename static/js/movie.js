@@ -1,8 +1,10 @@
-const reviewContainer = document.querySelector(".review-container");
-const screeningUI = document.querySelector(".screenings");
+// Gets movie id from the URL \\
 const path = window.location.pathname;
 const movieId = path.split("/").pop();
 
+
+// Shows screenings with pagination if needed \\
+const screeningUI = document.querySelector(".screenings");
 let currentPage = 1;
 let pageCount;
 
@@ -14,39 +16,33 @@ async function renderScreenings() {
   const page = payload.meta.pagination.page;
   pageCount = payload.meta.pagination.pageCount;
 
-  // Adds the header
-  let template = `<h2>Filmvisningar ${
-    pageCount > 1 ? `<span>Sida: ${page} av ${pageCount}</span></h2>` : `</h2>`
-  }`;
+  // Adds the header 
+  let template = `<h2>Filmvisningar ${pageCount > 1 ? `<span>Sida: ${page} av ${pageCount}</span></h2>` : `</h2>`}`;
 
   payload.data.map((screening) => {
     const room = screening.attributes.room;
-    let date = new Date(screening.attributes.start_time).toLocaleString();
-    date = date.substring(0, date.length - 3);
-    date = date.split(" ");
+    const date = screening.attributes.start_time.date;
+    const time = screening.attributes.start_time.time;
 
     // Adds the screenings
     template += `
         <li>
             <div>
                 <h3>${room}</h3>
-                <p>${date[0]}<span style="margin-left: 1rem;">${date[1]}</span></p>
+                <p>${date}<span style="margin-left: 1rem;">${time}</span></p>
             </div>
             <button>Boka</button>
         </li>`;
   });
 
   // Adds next and before buttons
-  template += `
-        ${
-          pageCount > 1
-            ? `<div class="btns">
-                <button onclick="before()">Föregående</button>
-                <button onclick="next()">Nästa</button>
-            </div>`
-            : ``
-        }
-    `;
+  if(pageCount > 1) {
+    template += `
+    <div class="btns">
+      ${currentPage == 1 ? `<button onclick="next()">Nästa</button>` : `<button onclick="before()">Föregående</button> <button onclick="next()">Nästa</button>`}
+    </div>`;
+  }
+  
   screeningUI.insertAdjacentHTML("beforeend", template);
 }
 renderScreenings();
@@ -72,8 +68,9 @@ function before() {
   renderScreenings();
 }
 
-// reviews
 
+// Shows reviews with pagination \\
+const reviewContainer = document.querySelector(".review-container");
 let reviewPage;
 let reviewPageCount;
 
@@ -126,6 +123,12 @@ async function nextReviewPage(data) {
     const payload = await res.json();
     renderNextPage(payload.data);
   }
+
+  reviewContainer.style.height = `${reviewContainer.offsetHeight}px`;
+  reviewContainer.classList.add("screeningsAnim");
+  setTimeout(() => {
+    reviewContainer.classList.remove("screeningsAnim");
+  }, 900);
 }
 
 function renderNextPage(data) {
@@ -171,6 +174,12 @@ async function previousReviewPage() {
     const payload = await res.json();
     renderNextPage(payload.data);
   }
+
+  reviewContainer.style.height = `${reviewContainer.offsetHeight}px`;
+  reviewContainer.classList.add("screeningsAnim");
+  setTimeout(() => {
+    reviewContainer.classList.remove("screeningsAnim");
+  }, 900);
 }
 
 function renderNextPage(data) {
