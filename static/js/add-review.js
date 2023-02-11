@@ -37,40 +37,6 @@ function loadComment() {
 }
 
 
-
-
-
-/*
-async function sendComment(movieId) {
-  //ev.preventDefault();
-
-  rate = rate.value;
-  comment = comment.value;
-  authorName = authorName.value;
-
-  await fetch(`/api/reviews/${movieId}`, {
-    method: "POST",
-    mode: "cors",
-    credentials: "same-origin",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify({
-      movieId: movieId,
-      comment: comment,
-      rating: rate,
-      author: authorName,
-    }),
-  });
-
-  document.querySelector("#rate").selectedIndex = 0;
-  document.querySelector("#addComment").value = "";
-  document.querySelector("#addName").value = "";
-
-  loadComment();
-  //loadReview(); 
-};*/
-
 let sendBtn = document.querySelector("#addBtn");
 
 sendBtn.addEventListener("click", async (ev) => {
