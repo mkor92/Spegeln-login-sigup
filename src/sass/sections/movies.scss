@@ -345,3 +345,69 @@
     }
   }
 }
+
+
+.review-box {
+    margin-top: 5vh;
+    margin-bottom: 10vh;
+    div {
+      list-style: none;
+      margin-bottom: 1rem;
+      background-color: rgb(207, 207, 207);
+      border-radius: 0.5rem;
+      padding: 0.5rem 1.5rem;
+      display: block;
+      
+      #addName {
+        display: block;
+        width: 10rem;
+        margin: 1rem auto 1rem 0.5rem;
+        border-radius: 0.5rem;
+        border: none;
+        padding: 0.5rem 1rem;
+        color: $first-color;
+        font-size: 1rem;
+      }
+      #rate {
+        display: block;
+        width: 10rem;
+        margin: 0.5rem auto 1rem 0.5rem;
+        border-radius: 0.5rem;
+        border: none;
+        padding: 0.5rem 1rem;
+        color: $first-color;
+        font-size: 1rem;
+      }
+      #addComment {
+        display: block;
+        height: fit-content;
+        min-height: 4rem;
+        width: 50vw;
+        margin: 0.5rem auto 1rem 0.5rem;
+        border-radius: 0.5rem;
+        border: none;
+        padding: 0.5rem 1rem;
+        color: $first-color;
+        font-size: 1rem;
+        
+      }
+      #addBtn {
+        display: block;
+        width: 7rem;     
+        margin: 2rem auto 0.5rem 0.5rem;
+        outline: none;
+        border: none;
+        font-size: 1rem;
+        border-radius: 0.5rem;
+        padding: 0.5rem 1rem;
+        background-color: $default-red;
+        color: $second-color;
+        cursor: pointer;
+      
+      }
+    }
+    h3 {
+        color: $first-color;
+    }
+
+}

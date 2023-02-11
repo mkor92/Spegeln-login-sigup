@@ -3,7 +3,7 @@ import fetch from "node-fetch";
 
 const API_URL_REVIEWS = "https://plankton-app-xhkom.ondigitalocean.app/api/reviews";
 
-export async function sendReview(req, res) {
+export async function sendReview() {
     let date = new Date();
     let created = date.toISOString();
   const response = await fetch(
@@ -35,7 +35,7 @@ export async function sendReview(req, res) {
 
 
 /*
-app.post("/api/movies/:movieId/reviews", async (req, res) => {
+app.post("/api/:movieId/reviews", async (req, res) => {
     const response = await fetch(
       "https://plankton-app-xhkom.ondigitalocean.app/api/reviews",
       {
