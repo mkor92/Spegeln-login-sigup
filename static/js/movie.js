@@ -7,9 +7,7 @@ let currentPage = 1;
 let pageCount;
 
 async function renderScreenings() {
-  const res = await fetch(
-    `/api/movies/${movieId}/screenings?page=${currentPage}`
-  );
+  const res = await fetch(`/api/movies/${movieId}/screenings?page=${currentPage}`);
   const payload = await res.json();
   const page = payload.meta.pagination.page;
   pageCount = payload.meta.pagination.pageCount;
