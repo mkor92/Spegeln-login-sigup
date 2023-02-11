@@ -4,6 +4,7 @@ let rate = document.querySelector("#rate");
 let comment = document.querySelector("#addComment");
 let authorName = document.querySelector("#addName");
 reviewContainer = document.querySelector(".review-container");
+let link = location.origin;
 
 function loadComment() {
     rate = rate.value;
@@ -32,7 +33,7 @@ sendBtn.addEventListener("click", async (ev) => {
   comment = comment.value;
   authorName = authorName.value;
 
-  const res = await fetch(`api/reviews/${movieId}`, {
+  const res = await fetch(`${link}/api/reviews`, {
     method: "POST",
     mode: "cors",
     credentials: "same-origin",
@@ -48,12 +49,11 @@ sendBtn.addEventListener("click", async (ev) => {
   })
 
   .then((res) => {
-    console.log('Success:', res.json());
+    
     return res.json();
   })
 
-  .catch((error) => {
-    console.error('Error:', error)});
+
 
   
 
