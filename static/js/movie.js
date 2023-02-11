@@ -220,7 +220,16 @@ function renderNextPage(data) {
 let rate = document.querySelector("#rate");
 let comment = document.querySelector("#addComment");
 let authorName = document.querySelector("#addName");
+let reviewBox = document.querySelector(".addReview");
 
+// Change temporary content of adding review box into Thank you text 
+function changeContent() {
+  var form = document.getElementById("form")
+  var originalContent = reviewBox.innerHTML;
+  reviewBox.innerHTML = "Tack för din recension!";
+  setTimeout(function() {
+    reviewBox.innerHTML = originalContent;
+  }, 5000) };
 
 document.querySelector("#addBtn").addEventListener("click", async (ev) => {
   ev.preventDefault();
@@ -254,6 +263,8 @@ document.querySelector("#addBtn").addEventListener("click", async (ev) => {
     reviewContainer.classList.remove("screeningsAnim");
   }, 900);
   reviewContainer.innerHTML = "";
+  
   getReviews();
+  changeContent();
 
 });
