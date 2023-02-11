@@ -22,7 +22,9 @@ export async function loadMovieRatings(id) {
   } else {
     const res = await fetch(`${IMDB_API}&i=${imdbMovieId}`)
     const payload = await res.json();
-    console.log(payload.imdbRating);
-    return payload.imdbRating
+    const imdbResult = payload.imdbRating;
+    const imdbFinalResult = imdbResult / 2 
+    console.log(imdbFinalResult);
+    return ("Betyg på IMDB: " + imdbFinalResult);
   }
 }
