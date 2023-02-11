@@ -10,6 +10,7 @@ router.get("/screenings", apiCtrl.getAllScreenings);
 router.get("/screenings/startpage", apiCtrl.startpageScreenings);
 router.get("/reviews", apiCtrl.reviews);
 router.get("/reviews/:id", apiCtrl.movieReviews);
+router.post("/reviews/:id", apiCtrl.review);
 router.get("*", (req, res) => {
   res
     .json({
@@ -18,6 +19,5 @@ router.get("*", (req, res) => {
     .status(404);
 });
 
-router.post("/reviews/:id", apiCtrl.review);
 
 export default router;
