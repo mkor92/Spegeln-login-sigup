@@ -229,7 +229,7 @@ function changeContent() {
   reviewBox.innerHTML = "Tack för din recension!";
   setTimeout(function() {
     reviewBox.innerHTML = originalContent;
-  }, 5000) };
+  }, 10000) };
 
 document.querySelector("#addBtn").addEventListener("click", async (ev) => {
   ev.preventDefault();
