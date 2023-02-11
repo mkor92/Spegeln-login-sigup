@@ -22,7 +22,7 @@ data.then((data) => {
     const id = movie.id;
 
     section.classList.add("slide");
-    console.log(movie.id);
+
     section.innerHTML = `<div class="slide-content">
     <h2>${title}</h2>
     
@@ -39,7 +39,6 @@ function rest() {
   document.querySelector(".slide").id = "first-slide";
   const firstSlide = document.querySelector("#first-slide");
   const slides = document.querySelectorAll(".slide");
-  console.log(slides.length);
 
   let slideCount = slides.length;
   next.addEventListener("click", () => {
@@ -94,13 +93,11 @@ function rest() {
       const slideContent = slides[currentSlide - 1].children[0];
       slideContent.children[0].classList.add("header-anim");
       slideContent.children[1].classList.add("header-anim");
-      slideContent.children[2].classList.add("btn-anim");
 
       setTimeout(() => {
         const slideContent = slides[currentSlide - 1].children[0];
         slideContent.children[0].classList.remove("header-anim");
         slideContent.children[1].classList.remove("header-anim");
-        slideContent.children[2].classList.remove("btn-anim");
       }, 1000);
     }, secs);
   }
