@@ -874,6 +874,11 @@ header nav menu .active {
   height: fit-content;
 }
 
+.rating {
+  color: white;
+  margin: 1rem;
+}
+
 .screenings {
   display: block;
   margin-top: 5vh;
@@ -1030,6 +1035,9 @@ header nav menu .active {
   }
 }
 @media screen and (max-width: 640px) {
+  .rating {
+    text-align: center;
+  }
   .movies h2 {
     padding-left: 5%;
   }

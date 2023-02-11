@@ -11,6 +11,7 @@ router.get("/screenings/startpage", apiCtrl.startpageScreenings);
 router.get("/reviews", apiCtrl.reviews);
 router.get("/reviews/:id", apiCtrl.movieReviews);
 router.post("/reviews/:id", apiCtrl.review);
+router.get("/movies/:id/ratings", apiCtrl.movieRating);
 router.get("*", (req, res) => {
   res
     .json({

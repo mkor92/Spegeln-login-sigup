@@ -5,6 +5,8 @@ import { getAllScreenings, getMovieScreenings, screeningsStartpage } from "../he
 import { sendReview } from "../helpers/review.js";
 
 
+import { loadMovieRatings } from "../helpers/ratings.js";
+
 const apiCtrl = {};
 
 apiCtrl.movies = async (req, res) => {
@@ -41,6 +43,10 @@ apiCtrl.reviews = async (req, res) => {
 
 apiCtrl.review = async (req, res) => { 
   res.json(await sendReview(req.params.id, req.body));
+};
+
+apiCtrl.movieRating = async (req, res) => {
+  res.json(await loadMovieRatings(req.params.id));
 };
 
 export default apiCtrl;
