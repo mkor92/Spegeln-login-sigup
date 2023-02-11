@@ -21,3 +21,4 @@ export async function loadMovieRatings(id) {
   }
   return result;
 }
+loadMovieRatings(1);
