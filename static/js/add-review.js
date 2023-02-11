@@ -1,17 +1,4 @@
 
-
-/*
-async function loadReview(movieId) {
-  const res = await fetch("http://localhost:5080/api/reviews/" + movieId);
-  let payload = await res.json();
-  let reviews = payload.data;
-  let arrayLength = payload.metaLength;
-  console.log(reviews);
-}; */
-
-
-///loadReview from reviwies??
-
 movieId = location.pathname.split('/').pop();
 let rate = document.querySelector("#rate");
 let comment = document.querySelector("#addComment");
@@ -33,7 +20,7 @@ function loadComment() {
             </li>
             `;
   
-  reviewContainer.insertAdjacentHTML("beforeend", template);
+  reviewContainer.insertAdjacentHTML("beforeBegin", template);
 }
 
 
@@ -45,7 +32,7 @@ sendBtn.addEventListener("click", async (ev) => {
   comment = comment.value;
   authorName = authorName.value;
 
-  await fetch(`/api/reviews/${movieId}`, {
+  const res = await fetch(`api/reviews/${movieId}`, {
     method: "POST",
     mode: "cors",
     credentials: "same-origin",
@@ -53,19 +40,29 @@ sendBtn.addEventListener("click", async (ev) => {
       "Content-Type": "application/json",
     },
     body: JSON.stringify({
-      movieId: movieId,
+      movieID: movieId,
       comment: comment,
       rating: rate,
       author: authorName,
     }),
-  });
+  })
+
+  .then((res) => {
+    console.log('Success:', res.json());
+    return res.json();
+  })
+
+  .catch((error) => {
+    console.error('Error:', error)});
+
+  
 
   document.querySelector("#rate").selectedIndex = 0;
   document.querySelector("#addComment").value = "";
   document.querySelector("#addName").value = "";
 
   loadComment();
-  //loadReview(); 
+  
 
 
 });

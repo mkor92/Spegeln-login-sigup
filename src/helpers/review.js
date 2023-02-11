@@ -3,11 +3,11 @@ import fetch from "node-fetch";
 
 const API_URL_REVIEWS = "https://plankton-app-xhkom.ondigitalocean.app/api/reviews";
 
-export async function sendReview() {
+export async function sendReview(movieId) {
     let date = new Date();
     let created = date.toISOString();
   const response = await fetch(
-    API_URL_REVIEWS + "/" + movieId,
+    `${API_URL_REVIEWS}/${movieId}`,
     {
       method: "POST",
       headers: {
