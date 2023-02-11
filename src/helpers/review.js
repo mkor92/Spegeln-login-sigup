@@ -14,17 +14,12 @@ export async function sendReview() {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        data: {
-            id: req.id,
-            attributes: 
-                {comment: req.body.comment,
-                 rating: req.body.rating,
-                 author: req.body.name,
-                 verified: false,
-                 createdAt: created,
-                 movieID: movieId,
-            }
-        },
+          comment: req.body.comment,
+          rating: req.body.rating,
+          author: req.body.name,
+          verified: false,
+          createdAt: created,
+          movieID: movieId, 
       }),
     }
   ).then((res) => {
