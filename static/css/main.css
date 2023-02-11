@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&display=swap");
+@import "https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&display=swap";
 * {
   margin: 0;
   padding: 0;
@@ -6,32 +6,27 @@
   text-decoration: none;
   font-family: "Poppins", sans-serif;
 }
-
 body {
-  background-image: linear-gradient(rgba(0, 0, 0, 0.45), rgba(0, 0, 0, 0.45)), url("../images/Background_cinema.jpg");
+  background-image: linear-gradient(rgba(0, 0, 0, 0.45), rgba(0, 0, 0, 0.45)),
+    url("../images/Background_cinema.jpg");
   background-size: cover;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
 }
-
 .sec {
   padding: 0 5% !important;
 }
-
 .sec-cont {
   max-width: 1000px;
   margin: 0 auto;
 }
-
 main {
   width: 100%;
 }
-
 .logo {
   cursor: pointer;
 }
-
 header {
   background-color: #cc0028;
 }
@@ -50,7 +45,7 @@ header nav menu {
   list-style: none;
 }
 header nav menu a {
-  color: white;
+  color: #fff;
   font-weight: bold;
   padding-top: 18px;
   padding-block-end: 22px;
@@ -59,16 +54,14 @@ header nav menu a {
   display: flex;
 }
 header nav menu a:hover {
-  color: lightgray;
+  color: #d3d3d3;
 }
 header nav menu .active {
-  border-bottom: 4px solid white;
+  border-bottom: 4px solid #fff;
 }
-
 .header-nav-toggle {
   display: none;
 }
-
 @media screen and (max-width: 640px) {
   .header-nav-toggle {
     display: block;
@@ -80,7 +73,7 @@ header nav menu .active {
     width: 3em;
     height: 0.4em;
     border-radius: 0.2em;
-    background-color: white;
+    background-color: #fff;
     margin: 0;
     padding: 0;
     border-width: 0;
@@ -93,7 +86,7 @@ header nav menu .active {
     width: 3em;
     height: 0.4em;
     border-radius: 0.2em;
-    background-color: white;
+    background-color: #fff;
     position: relative;
     top: 0.8em;
     transition: transform 0.5s;
@@ -104,7 +97,7 @@ header nav menu .active {
     width: 3em;
     height: 0.4em;
     border-radius: 0.2em;
-    background-color: white;
+    background-color: #fff;
     position: relative;
     top: 1.2em;
   }
@@ -191,33 +184,31 @@ header nav menu .active {
   width: fit-content;
   text-decoration: none;
   list-style-type: none;
-  border: 0.1rem solid black;
+  border: 0.1rem solid #000;
   border-radius: 0.5rem;
   text-align: center;
   margin-right: 0.5rem;
   padding: 0.45rem;
-  background-color: white;
+  background-color: #fff;
   position: relative;
   font-size: 1rem;
 }
 .nav ul .movies-nav-list .movies-nav-element a {
-  color: black;
+  color: #000;
 }
-
 .mobile-nav-menu {
   display: none;
 }
-
 @media screen and (max-width: 640px) {
   .mobile-nav-menu {
     display: block;
-    border: 0.1rem solid black;
+    border: 0.1rem solid #000;
     border-radius: 0.25rem;
     text-align: center;
     margin: 0.5rem auto 0.15rem;
     padding: 0.45rem;
     width: 90vw;
-    background-color: white;
+    background-color: #fff;
     font-size: 1rem;
   }
   .nav {
@@ -249,7 +240,7 @@ header nav menu .active {
   width: 100%;
   height: auto;
   position: relative;
-  border: 8px solid rgb(255, 255, 255);
+  border: 8px solid #fff;
 }
 .accordion-cont .slide-btn {
   position: absolute;
@@ -316,7 +307,7 @@ header nav menu .active {
 }
 .accordion-cont .slider .slide .slide-content h2,
 .accordion-cont .slider .slide .slide-content h3 {
-  color: white;
+  color: #fff;
   pointer-events: none;
 }
 .accordion-cont .slider .slide .slide-content .header-anim {
@@ -335,10 +326,10 @@ header nav menu .active {
   width: auto;
   height: auto;
   position: unset;
-  color: white;
-  background-color: rgb(23, 23, 23);
+  color: #fff;
+  background-color: #171717;
   padding: 0.5rem 4rem;
-  border: 1px solid white;
+  border: 1px solid #fff;
 }
 .accordion-cont .slider .slide .slide-content .btn-anim {
   animation: fadein 1s forwards;
@@ -353,7 +344,6 @@ header nav menu .active {
   height: inherit;
   object-fit: cover;
 }
-
 @keyframes fadein {
   from {
     transform: translateY(150%);
@@ -371,12 +361,11 @@ header nav menu .active {
   background-color: #cc0028;
   margin-top: auto;
 }
-
 .footer-nav {
   padding: 2rem 0 4rem 0;
   display: flex;
   justify-content: space-between;
-  color: white;
+  color: #fff;
   list-style-type: none;
 }
 .footer-nav h2 {
@@ -385,26 +374,21 @@ header nav menu .active {
 .footer-nav li {
   font-size: 0.8rem;
 }
-
 .footer-options {
-  color: white;
+  color: #fff;
 }
 .footer-options:hover {
   text-decoration: underline;
 }
-
 #footer-facebook-logo {
-  color: white;
+  color: #fff;
 }
-
 #footer-instagram-logo {
-  color: white;
+  color: #fff;
 }
-
 #footer-twitter-logo {
-  color: white;
+  color: #fff;
 }
-
 @media screen and (max-width: 640px) {
   .footer-nav {
     display: grid;
@@ -426,7 +410,6 @@ header nav menu .active {
   margin-bottom: 12em;
   width: 100%;
 }
-
 .about-us-text {
   padding-bottom: 2rem;
   margin-bottom: 3em;
@@ -437,7 +420,6 @@ header nav menu .active {
   width: 100%;
   text-align: left;
 }
-
 .contact-text-about-us {
   padding: 2rem 0;
   text-align: center;
@@ -450,24 +432,20 @@ header nav menu .active {
   width: 100%;
   text-align: left;
 }
-
 .about-us-img {
   width: 100%;
   display: block;
   margin: 0 auto 3rem 0;
 }
-
 .aboutus-title {
-  color: white;
-  border-bottom: 2px solid white;
+  color: #fff;
+  border-bottom: 2px solid #fff;
   margin: 1.5rem 1.5rem 1.5rem 0;
   min-width: 100%;
 }
-
 .main-container {
   padding: 1rem 0;
 }
-
 #booking-render-container {
   border-radius: 10px;
   margin: auto;
@@ -482,7 +460,7 @@ header nav menu .active {
 #booking-render-container h3 {
   margin: 0;
   padding: 0;
-  color: black;
+  color: #000;
 }
 #booking-render-container .booking-step-1-start {
   margin-top: 1rem;
@@ -491,10 +469,10 @@ header nav menu .active {
   width: 60%;
   text-align: center;
   margin: auto;
-  border: 3px solid black;
+  border: 3px solid #000;
   margin-bottom: 3rem;
   font-weight: bold;
-  color: black;
+  color: #000;
 }
 #booking-render-container .choose-seat-container {
   display: flex;
@@ -507,13 +485,13 @@ header nav menu .active {
 #booking-render-container .choose-seat-container div {
   display: flex;
   justify-content: center;
-  border: 3px solid black;
+  border: 3px solid #000;
   width: 3.5rem;
   height: 3.5rem;
   align-items: center;
   border-radius: 10px;
   font-weight: bold;
-  color: black;
+  color: #000;
 }
 #booking-render-container .email-container {
   display: flex;
@@ -521,7 +499,7 @@ header nav menu .active {
   margin-left: 55%;
 }
 #booking-render-container .name-email-details {
-  color: black;
+  color: #000;
   margin-top: 2em;
 }
 #booking-render-container .name-input {
@@ -540,7 +518,7 @@ header nav menu .active {
 }
 #booking-render-container ::placeholder {
   text-align: center;
-  color: black;
+  color: #000;
 }
 #booking-render-container .confirm-email-input {
   text-align: center;
@@ -554,7 +532,7 @@ header nav menu .active {
   margin-top: 2rem;
 }
 #booking-render-container .buy-button-container button {
-  color: white;
+  color: #fff;
   background-color: #cc0028;
   padding: 1rem 2.5rem;
   border-radius: 10px;
@@ -562,14 +540,13 @@ header nav menu .active {
   font-weight: bold;
   border: none;
 }
-
 .not-found {
   margin-top: 3rem;
 }
 .not-found h1,
 .not-found p,
 .not-found a {
-  color: white;
+  color: #fff;
 }
 .not-found h1 {
   margin-bottom: 1rem;
@@ -578,7 +555,7 @@ header nav menu .active {
   line-height: 2rem;
 }
 .not-found p span {
-  background-color: rgb(105, 105, 105);
+  background-color: dimgray;
   border-radius: 0.5rem;
   padding: 0.2rem 0.8rem;
 }
@@ -589,28 +566,24 @@ header nav menu .active {
   border-radius: 0.5rem;
   background-color: #cc0028;
 }
-
 .res-sidebar {
   margin: 1.7rem auto 0 2rem !important;
 }
-
 .restaurant {
-  border: 2px solid white;
+  border: 2px solid #fff;
   margin: 1.5rem;
   width: 94%;
 }
-
 .undercategory {
   display: flex;
   flex-direction: row;
   padding-bottom: 1rem;
   margin: 1rem auto 2rem auto;
-  border-bottom: 1px solid white;
+  border-bottom: 1px solid #fff;
 }
 .undercategory .res-title {
   margin-top: 1.5rem;
 }
-
 .restaurant-under-list {
   display: flex;
   justify-content: left;
@@ -620,23 +593,21 @@ header nav menu .active {
   width: fit-content;
   text-decoration: none;
   list-style-type: none;
-  border: 0.1rem solid black;
+  border: 0.1rem solid #000;
   border-radius: 0.5rem;
   text-align: center;
   margin-right: 0.5rem;
   padding: 0.45rem;
-  background-color: white;
+  background-color: #fff;
   position: relative;
   font-size: smaller;
 }
 .restaurant-under-list .restaurant-under-element a {
-  color: black;
+  color: #000;
 }
-
 .restaurant-text {
-  color: white;
+  color: #fff;
 }
-
 .restaurant-text-container {
   background-color: rgba(255, 255, 255, 0.3);
   box-sizing: border-box;
@@ -646,7 +617,6 @@ header nav menu .active {
   text-align: left;
   margin: 1rem;
 }
-
 .restaurant-info {
   display: flex;
   flex-direction: row;
@@ -660,10 +630,9 @@ header nav menu .active {
   margin: 1rem;
 }
 .restaurant-info li .press-info a {
-  color: white;
+  color: #fff;
   text-decoration: underline;
 }
-
 @media screen and (max-width: 640px) {
   .restaurant {
     width: 85vw;
@@ -707,23 +676,23 @@ header nav menu .active {
   width: fit-content;
   text-decoration: none;
   list-style-type: none;
-  border: 0.1rem solid black;
+  border: 0.1rem solid #000;
   border-radius: 0.5rem;
   text-align: center;
   margin-right: 0.5rem;
   padding: 0.45rem;
-  background-color: white;
+  background-color: #fff;
   position: relative;
   font-size: smaller;
 }
 .movies .movies-category-list .movies-category-element a {
-  color: black;
+  color: #000;
 }
 .movies .movies-h2 {
   margin: 20px 0px 10px;
-  color: white;
+  color: #fff;
   width: 100%;
-  border-bottom: 1px solid white;
+  border-bottom: 1px solid #fff;
 }
 .movies .movies-list {
   margin-top: 3rem;
@@ -786,7 +755,7 @@ header nav menu .active {
 .movies .movies-list2 .movies-list-item .date,
 .movies .movies-list3 .movies-list-item .date,
 .movies .movies-list4 .movies-list-item .date {
-  color: white;
+  color: #fff;
   background-color: rgba(0, 0, 0, 0.4);
   font-size: 1.5rem;
   margin-top: -60px;
@@ -799,7 +768,7 @@ header nav menu .active {
 .movies .movies-list2 .movies-list-item a,
 .movies .movies-list3 .movies-list-item a,
 .movies .movies-list4 .movies-list-item a {
-  color: white;
+  color: #fff;
   background-color: rgba(0, 0, 0, 0.4);
   border-radius: 0.2rem;
   margin: 0px, auto;
@@ -831,7 +800,7 @@ header nav menu .active {
 .movies .movies-list3 .movies-list-item img,
 .movies .movies-list4 .movies-list-item img {
   display: block;
-  border: 1px solid white;
+  border: 1px solid #fff;
   max-width: 180px;
   max-height: 250px;
   margin-bottom: 20px auto 20px auto;
@@ -845,13 +814,12 @@ header nav menu .active {
   border: 2px solid #cc0028;
   cursor: pointer;
 }
-
 .movie {
   margin: 5em auto;
 }
 .movie h1,
 .movie p {
-  color: white;
+  color: #fff;
   font-size: 1.2em;
   background-color: rgba(0, 0, 0, 0.8);
   padding: 1.5rem;
@@ -867,26 +835,46 @@ header nav menu .active {
   display: flex;
 }
 .movie img {
-  border: 1px solid white;
+  border: 1px solid #fff;
   border-radius: 0.4rem;
   max-width: 40vw;
   max-height: 600px;
   height: fit-content;
 }
-
 .screenings {
   display: block;
   margin-top: 5vh;
   margin-bottom: 10vh;
 }
 .screenings > h2 {
-  color: white;
-  margin-bottom: 1rem;
+  padding-left: 1rem;
+  pointer-events: none;
+  color: #fff;
+  margin-bottom: 2rem;
+  position: relative;
+}
+.screenings > h2::before {
+  content: "";
+  display: block;
+  background-color: #cc0028;
+  width: 0.2rem;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+.screenings > h2 > span {
+  margin-left: 2rem;
+  background-color: #cc0028;
+  padding: 0.5rem;
+  border-radius: 0.5rem;
+  font-weight: 500;
+  font-size: 1rem;
 }
 .screenings > li {
   list-style: none;
   margin-bottom: 1rem;
-  background-color: rgb(207, 207, 207);
+  background-color: #cfcfcf;
   border-radius: 0.5rem;
   padding: 0.5rem 1.5rem;
   display: flex;
@@ -899,32 +887,81 @@ header nav menu .active {
 .screenings > li > button {
   cursor: pointer;
   background-color: #cc0028;
-  color: white;
+  color: #fff;
   border: none;
   border-radius: 0.5rem;
   padding: 0.6rem 1rem;
 }
-
+.screenings > .btns {
+  margin-top: 2rem;
+}
+.screenings > .btns button {
+  outline: none;
+  border: none;
+  font-size: 1rem;
+  border-radius: 0.5rem;
+  padding: 0.5rem 1rem;
+  background-color: #cc0028;
+  color: #fff;
+  cursor: pointer;
+  margin-right: 0.5rem;
+}
+.screeningsAnim {
+  animation: screeningLi 1s ease-in;
+}
+@keyframes screeningLi {
+  from {
+    pointer-events: none;
+    opacity: 0;
+  }
+  to {
+    pointer-events: all;
+    opacity: 1;
+  }
+}
 .review-container {
-  display: block;
   margin-top: 5vh;
   margin-bottom: 10vh;
 }
-.review-container > h2 {
-  color: white;
+.review-container h2 {
+  color: #fff;
   margin-bottom: 1rem;
+  display: inline-block;
 }
-.review-container > li {
+.review-container .review-page {
+  margin-left: 2rem;
+  background-color: #cc0028;
+  padding: 0.5rem;
+  border-radius: 0.5rem;
+  font-weight: 500;
+  font-size: 1rem;
+  display: inline-block;
+  color: #fff;
+}
+.review-container li {
   list-style: none;
   margin-bottom: 1rem;
-  background-color: rgb(207, 207, 207);
+  background-color: #cfcfcf;
   border-radius: 0.5rem;
   padding: 0.5rem 1.5rem;
 }
 .review-container .review-author {
   text-align: right;
 }
-
+.review-container .review-btn-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.review-container .review-btn-container button {
+  cursor: pointer;
+  background-color: #cc0028;
+  color: #fff;
+  border: none;
+  border-radius: 0.5rem;
+  padding: 0.6rem 1rem;
+  margin: auto;
+}
 @media screen and (max-width: 950px) {
   .movies {
     max-width: 100vw;
@@ -982,10 +1019,10 @@ header nav menu .active {
   }
 }
 .main-container p {
-  color: white;
+  color: #fff;
 }
 .main-container h1 {
-  color: white;
+  color: #fff;
   margin-top: 1.5rem;
 }
 .main-container .undercategory {
@@ -994,7 +1031,7 @@ header nav menu .active {
   flex-direction: row;
   padding-bottom: 1rem;
   margin-bottom: 2rem;
-  border-bottom: 1px solid white;
+  border-bottom: 1px solid #fff;
 }
 .main-container .movies-salon-list {
   display: flex;
@@ -1004,33 +1041,33 @@ header nav menu .active {
   width: fit-content;
   text-decoration: none;
   list-style-type: none;
-  border: 0.1rem solid black;
+  border: 0.1rem solid #000;
   border-radius: 0.5rem;
   text-align: center;
   margin-right: 0.5rem;
   padding: 0.45rem;
-  background-color: white;
+  background-color: #fff;
   position: relative;
   font-size: smaller;
 }
 .main-container .movies-salon-list .movies-salon-element a {
-  color: black;
+  color: #000;
 }
 .main-container .salonA,
 .main-container .salonB {
   max-height: 60vh;
   width: 100%;
   max-width: 90vw;
-  border: 2px solid white;
+  border: 2px solid #fff;
   margin-bottom: 0.6em;
 }
 .main-container .salon-header {
   margin: 0.5em 0 1rem 0;
-  border-bottom: 1px solid white;
+  border-bottom: 1px solid #fff;
   max-width: 60vw;
 }
 .main-container .salon-text {
-  color: white;
+  color: #fff;
   margin-bottom: 3em;
   background-color: rgba(255, 255, 255, 0.5);
   box-sizing: border-box;
@@ -1039,14 +1076,12 @@ header nav menu .active {
   width: 100%;
   max-width: 90vw;
 }
-
 .salon-h2 {
-  color: white;
-  border-bottom: 2px solid white;
+  color: #fff;
+  border-bottom: 2px solid #fff;
   margin: 1.5rem 1.5rem 1.5rem 0;
   min-width: 100%;
 }
-
 .salon-movielist {
   display: flex;
   flex-direction: row;
@@ -1058,14 +1093,13 @@ header nav menu .active {
   list-style-type: none;
 }
 .salon-movielist li img {
-  border: 3px solid white;
+  border: 3px solid #fff;
   max-width: 200px;
 }
 .salon-movielist li img:hover {
   transform: scale(1.1);
   cursor: pointer;
 }
-
 @media screen and (max-width: 640px) {
   .main-container {
     display: flex;
@@ -1080,7 +1114,7 @@ header nav menu .active {
 }
 .sidebar {
   background-color: #cc0028;
-  color: white;
+  color: #fff;
   width: 26ch;
   min-height: 20rem;
   height: fit-content;
@@ -1103,18 +1137,16 @@ header nav menu .active {
   flex-direction: row;
   justify-content: left;
   text-decoration: none;
-  color: white;
+  color: #fff;
 }
 .sidebar li .sidebar-links p {
   padding-right: 0.5rem;
 }
-
 .show-sidebar-next {
   display: flex;
   flex-direction: row;
   justify-content: space-evenly;
 }
-
 @media screen and (max-width: 640px) {
   .sidebar {
     display: none;
@@ -1130,25 +1162,21 @@ header nav menu .active {
   text-align: left;
   margin: 2rem auto;
 }
-
 .under-construction-heading {
   text-align: center;
-  color: white;
+  color: #fff;
 }
-
 .under-construction-icon-container {
   margin-top: 2.5rem;
   text-align: center;
 }
-
 .under-construction-btn-container {
   text-align: center;
   margin-top: 4rem;
   margin-bottom: 1.5rem;
 }
-
 .under-construction-link-home {
-  color: white;
+  color: #fff;
   background-color: #cc0028;
   padding: 1rem 2.5rem;
   border-radius: 10px;
@@ -1156,26 +1184,22 @@ header nav menu .active {
   font-weight: bold;
   border: none;
 }
-
 .fa-wrench {
   color: #cc0028;
 }
-
 .undercategory {
   display: flex;
   justify-content: left;
   flex-direction: row;
   padding-bottom: 1rem;
   margin-bottom: 2rem;
-  border-bottom: 1px solid white;
+  border-bottom: 1px solid #fff;
 }
-
 .events-title {
-  color: white;
+  color: #fff;
   margin-top: 1.5rem;
   font-size: 1.5rem;
 }
-
 .events-category-list {
   display: flex;
   margin: 20px 0px 10px;
@@ -1184,19 +1208,18 @@ header nav menu .active {
   width: fit-content;
   text-decoration: none;
   list-style-type: none;
-  border: 0.1rem solid black;
+  border: 0.1rem solid #000;
   border-radius: 0.5rem;
   text-align: center;
   margin-right: 0.5rem;
   padding: 0.45rem;
-  background-color: white;
+  background-color: #fff;
   position: relative;
   font-size: smaller;
 }
 .events-category-list .events-category-element a {
-  color: black;
+  color: #000;
 }
-
 @media screen and (max-width: 640px) {
   .events-title {
     margin-left: 1.5rem;

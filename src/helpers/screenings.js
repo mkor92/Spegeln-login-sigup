@@ -2,21 +2,31 @@ import fetch from "node-fetch";
 
 const API = "https://plankton-app-xhkom.ondigitalocean.app/api/screenings";
 
-export async function movieScreenings(id) {
-  const res = await fetch(`${API}?filters[movie]=${id}`);
-  const payload = await res.json();
-  return payload.data;
-}
-
 export async function getAllScreenings() {
   const res = await fetch(API);
   const payload = await res.json();
   return payload.data;
 }
 
-export async function screeningsStartpage() {
-  const apiRes = await fetch(API + "?populate=movie");
-  const payload = await apiRes.json();
+export async function getMovieScreenings(apiAdapter, movieId, page = 'all') {
+  const payload = await apiAdapter.getMovieScreenings(movieId, page);
+  const meta = payload.meta;
+  const data = payload.data.map(screening => ({
+    id: screening.id,
+    attributes:  {
+      ...screening.attributes,
+      start_time: {
+        date: screening.attributes.start_time.split("T")[0],
+        time: screening.attributes.start_time.split("T")[1].substring(0, screening.attributes.start_time.split("T")[1].length - 8)
+      },
+    }
+  }));
+
+  return { data, meta }
+}
+
+export async function screeningsStartpage(apiAdapter) {
+  const payload = await apiAdapter.loadScreeningsStartpage();
   const result = payload.data
     .map((item) => ({
       id: item.id,
