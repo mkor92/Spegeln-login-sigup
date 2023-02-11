@@ -16,8 +16,8 @@ export async function loadMovieRatings(id) {
 
     let tempResult = sum / result.length;
     let finalResult = Math.round(tempResult * 10) / 10;
-    console.log(finalResult);
-    return result;
+
+    return "Rating: " + finalResult + " / 5";
   } else {
     const res = await fetch(`${IMDB_API}&i=${imdbMovieId}`);
     const payload = await res.json();

@@ -7,6 +7,14 @@ const screeningUI = document.querySelector(".screenings");
 let currentPage = 1;
 let pageCount;
 
+async function showRating() {
+  const res = await fetch(`/api/movies/${movieId}/ratings`);
+  const payload = await res.json();
+  console.log(payload);
+  document.querySelector(".rating").innerHTML = payload;
+}
+showRating();
+
 async function renderScreenings() {
   const res = await fetch(`/api/movies/${movieId}/screenings?page=${currentPage}`);
   const payload = await res.json();
