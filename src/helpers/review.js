@@ -32,10 +32,12 @@ export async function sendReview(req, res) {
   });
   res.status(201).end();
 };
+
+
 /*
 app.post("/api/movies/:movieId/reviews", async (req, res) => {
     const response = await fetch(
-      "https://lernia-kino-cms.herokuapp.com/api/reviews",
+      "https://plankton-app-xhkom.ondigitalocean.app/api/reviews",
       {
         method: "POST",
         headers: {

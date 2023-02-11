@@ -12,10 +12,11 @@ async function loadReview(movieId) {
 
 ///loadReview from reviwies??
 
-let movieId = location.pathname.split('/').pop();
+movieId = location.pathname.split('/').pop();
 let rate = document.querySelector("#rate");
 let comment = document.querySelector("#addComment");
 let authorName = document.querySelector("#addName");
+reviewContainer = document.querySelector(".review-container");
 
 function loadComment() {
     rate = rate.value;
@@ -93,7 +94,7 @@ sendBtn.addEventListener("click", async (ev) => {
     }),
   });
 
-  document.querySelector("#rate").selectedIndex = "";
+  document.querySelector("#rate").selectedIndex = 0;
   document.querySelector("#addComment").value = "";
   document.querySelector("#addName").value = "";
 
