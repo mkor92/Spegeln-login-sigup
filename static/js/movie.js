@@ -68,7 +68,6 @@ function before() {
   renderScreenings();
 }
 
-
 // Shows reviews with pagination \\
 const reviewContainer = document.querySelector(".review-container");
 let reviewPage;
@@ -216,3 +215,45 @@ function renderNextPage(data) {
   const previousBtn = document.querySelector(".previous-btn");
   previousBtn.addEventListener("click", previousReviewPage);
 }
+
+// Send a review for the movie \\
+let rate = document.querySelector("#rate");
+let comment = document.querySelector("#addComment");
+let authorName = document.querySelector("#addName");
+
+
+document.querySelector("#addBtn").addEventListener("click", async (ev) => {
+  ev.preventDefault();
+
+  const body = {
+    author: authorName.value,
+    comment: comment.value,
+    rating: parseInt(rate.value),
+  }
+
+  const res = await fetch(`/api/reviews/${movieId}`, {
+    method: "POST",
+    mode: "cors",
+    credentials: "same-origin",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(body),
+  });
+
+  console.log(res.json())
+
+  document.querySelector("#rate").selectedIndex = 0;
+  document.querySelector("#addComment").value = "";
+  document.querySelector("#addName").value = "";
+
+  // Animation for the reviews
+  reviewContainer.style.height = `${reviewContainer.offsetHeight}px`;
+  reviewContainer.classList.add("screeningsAnim");
+  setTimeout(() => {
+    reviewContainer.classList.remove("screeningsAnim");
+  }, 900);
+  reviewContainer.innerHTML = "";
+  getReviews();
+
+});

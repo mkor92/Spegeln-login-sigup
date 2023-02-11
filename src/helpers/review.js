@@ -9,7 +9,7 @@ export async function sendReview(movieId, data) {
     "data": {
       comment: data.comment,
       rating: data.rating,
-      author: data.name,
+      author: data.author,
       verified: false,
       movie: movieId,
       createdAt: new Date().toISOString(),
