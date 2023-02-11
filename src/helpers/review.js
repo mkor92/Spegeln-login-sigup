@@ -16,7 +16,7 @@ export async function sendReview(movieId, data) {
     }
   }
 
-  const res = await fetch(`${API}`,
+  const res = await fetch(API,
     {
       method: "POST",
       headers: {

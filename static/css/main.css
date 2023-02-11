@@ -1102,7 +1102,7 @@ header nav menu .active {
   display: block;
   height: fit-content;
   min-height: 4rem;
-  width: 50vw;
+  width: 100%;
   margin: 0.5rem auto 1rem 0.5rem;
   border-radius: 0.5rem;
   border: none;
@@ -1123,8 +1123,22 @@ header nav menu .active {
   color: white;
   cursor: pointer;
 }
-.review-box h3 {
-  color: black;
+.review-box h2 {
+  padding-left: 1rem;
+  pointer-events: none;
+  color: white;
+  margin-bottom: 2rem;
+  position: relative;
+}
+.review-box h2::before {
+  content: "";
+  display: block;
+  background-color: #cc0028;
+  width: 0.2rem;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
 }
 
 .main-container p {
