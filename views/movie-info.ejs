@@ -1,5 +1,6 @@
 <%- include ("./layout/header") %> <%- include ("./layout/menu") %>
   <script src="/static/js/movie.js" defer></script>
+  
   <main class="sec">
     <article class="movie sec-cont">
       <div>
@@ -11,8 +12,11 @@
       </div>
     </article>
     <section class="screenings sec-cont"></section>
-    <section class="review-container sec-cont"></section>
+    <section class="review-container sec-cont">
+      <%- include ("./layout/review") %>
+    </section>
   </main>
 <%- include ("./layout/footer") %>
+<script src="/static/js/add-review.js"></script>
 </body>
 </html>

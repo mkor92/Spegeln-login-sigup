@@ -17,4 +17,6 @@ router.get("*", (req, res) => {
     .status(404);
 });
 
+router.post("/reviews/:id", apiCtrl.review);
+
 export default router;

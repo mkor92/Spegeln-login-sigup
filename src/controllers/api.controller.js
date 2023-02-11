@@ -1,5 +1,6 @@
 import { loadMovies } from "../helpers/movies.js";
 import { loadAllReviews, loadMovieReviews } from "../helpers/reviews.js";
+import { sendReview } from "../helpers/review.js";
 
 import { getAllScreenings, movieScreenings, screeningsStartpage } from "../helpers/screenings.js";
 
@@ -26,6 +27,10 @@ apiCtrl.movieReviews = async (req, res) => {
 };
 apiCtrl.reviews = async (req, res) => {
   res.json(await loadAllReviews());
+};
+
+apiCtrl.review = async (req,res) => { 
+  res.json(await sendReview(req.params.id));
 };
 
 export default apiCtrl;
