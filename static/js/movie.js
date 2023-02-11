@@ -2,22 +2,29 @@
 const path = window.location.pathname;
 const movieId = path.split("/").pop();
 
-
 // Shows screenings with pagination if needed \\
 const screeningUI = document.querySelector(".screenings");
 let currentPage = 1;
 let pageCount;
 
+async function showRating() {
+  const res = await fetch(`/api/movies/${movieId}/ratings`);
+  const payload = await res.json();
+  console.log(payload);
+  document.querySelector(".rating").innerHTML = payload;
+}
+showRating();
+
 async function renderScreenings() {
-  const res = await fetch(
-    `/api/movies/${movieId}/screenings?page=${currentPage}`
-  );
+  const res = await fetch(`/api/movies/${movieId}/screenings?page=${currentPage}`);
   const payload = await res.json();
   const page = payload.meta.pagination.page;
   pageCount = payload.meta.pagination.pageCount;
 
-  // Adds the header 
-  let template = `<h2>Filmvisningar ${pageCount > 1 ? `<span>Sida: ${page} av ${pageCount}</span></h2>` : `</h2>`}`;
+  // Adds the header
+  let template = `<h2>Filmvisningar ${
+    pageCount > 1 ? `<span>Sida: ${page} av ${pageCount}</span></h2>` : `</h2>`
+  }`;
 
   payload.data.map((screening) => {
     const room = screening.attributes.room;
@@ -36,13 +43,17 @@ async function renderScreenings() {
   });
 
   // Adds next and before buttons
-  if(pageCount > 1) {
+  if (pageCount > 1) {
     template += `
     <div class="btns">
-      ${currentPage == 1 ? `<button onclick="next()">Nästa</button>` : `<button onclick="before()">Föregående</button> <button onclick="next()">Nästa</button>`}
+      ${
+        currentPage == 1
+          ? `<button onclick="next()">Nästa</button>`
+          : `<button onclick="before()">Föregående</button> <button onclick="next()">Nästa</button>`
+      }
     </div>`;
   }
-  
+
   screeningUI.insertAdjacentHTML("beforeend", template);
 }
 renderScreenings();
@@ -67,7 +78,6 @@ function before() {
   screeningUI.innerHTML = "";
   renderScreenings();
 }
-
 
 // Shows reviews with pagination \\
 const reviewContainer = document.querySelector(".review-container");

@@ -143,6 +143,10 @@
   }
 }
 
+.rating {
+  color: $second-color;
+  margin: 1rem;
+}
 .screenings {
   display: block;
   margin-top: 5vh;
@@ -310,6 +314,9 @@
 }
 
 @media screen and (max-width: $breaking-point) {
+  .rating {
+    text-align: center;
+  }
   .movies {
     h2 {
       padding-left: 5%;
