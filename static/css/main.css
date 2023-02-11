@@ -962,6 +962,18 @@ header nav menu .active {
   color: white;
   margin-bottom: 1rem;
   display: inline-block;
+  position: relative;
+  padding-left: 1rem;
+}
+.review-container h2::before {
+  content: "";
+  display: block;
+  background-color: #cc0028;
+  width: 0.2rem;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
 }
 .review-container .review-page {
   margin-left: 2rem;
@@ -984,18 +996,18 @@ header nav menu .active {
   text-align: right;
 }
 .review-container .review-btn-container {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
+  margin-top: 2rem;
 }
 .review-container .review-btn-container button {
-  cursor: pointer;
+  outline: none;
+  border: none;
+  font-size: 1rem;
+  border-radius: 0.5rem;
+  padding: 0.5rem 1rem;
   background-color: #cc0028;
   color: white;
-  border: none;
-  border-radius: 0.5rem;
-  padding: 0.6rem 1rem;
-  margin: auto;
+  cursor: pointer;
+  margin-right: 0.5rem;
 }
 
 @media screen and (max-width: 950px) {
