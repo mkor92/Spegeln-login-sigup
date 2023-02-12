@@ -2,17 +2,26 @@
 const path = window.location.pathname;
 const movieId = path.split("/").pop();
 
+// Adds the rating to the movie \\
+async function showRating() {
+  const res = await fetch(`/api/movies/${movieId}/ratings`);
+  const payload = await res.json();
+  const rating = Math.round(Number(payload.rating));
+  const starsTemplate = getStars(rating);
+
+  let template = `
+  <h3>Betyg ${rating}</h3>
+  ${starsTemplate}
+  `;
+
+  document.querySelector(".rating").insertAdjacentHTML("beforeend", template);
+}
+showRating();
+
 // Shows screenings with pagination if needed \\
 const screeningUI = document.querySelector(".screenings");
 let currentPage = 1;
 let pageCount;
-
-async function showRating() {
-  const res = await fetch(`/api/movies/${movieId}/ratings`);
-  const payload = await res.json();
-  document.querySelector(".rating").innerHTML = payload;
-}
-showRating();
 
 async function renderScreenings() {
   const res = await fetch(`/api/movies/${movieId}/screenings?page=${currentPage}`);
@@ -98,11 +107,12 @@ function renderFirstPage(data) {
     let rating = review.attributes.rating;
     let comment = review.attributes.comment;
     let author = review.attributes.author;
+    const stars = getStars(rating);
 
     template += `
         <li>
             <div>
-                <h3>Betyg ${rating}</h3>
+                <h3>${stars}</h3>
                 <p>${comment}</p>
                 <p class="review-author">${author}</p>           
             </div> 
@@ -147,11 +157,12 @@ function renderNextPage(data) {
     let rating = review.attributes.rating;
     let comment = review.attributes.comment;
     let author = review.attributes.author;
+    const stars = getStars(rating);
 
     template += `
         <li>
             <div>
-                <h3>Betyg ${rating}</h3>
+                <h3>${stars}</h3>
                 <p>${comment}</p>
                 <p class="review-author">${author}</p>           
             </div> 
@@ -198,11 +209,12 @@ function renderNextPage(data) {
     let rating = review.attributes.rating;
     let comment = review.attributes.comment;
     let author = review.attributes.author;
+    const stars = getStars(rating);
 
     template += `
         <li>
             <div>
-                <h3>Betyg ${rating}</h3>
+                <h3>${stars}</h3>
                 <p>${comment}</p>
                 <p class="review-author">${author}</p>           
             </div> 
@@ -224,6 +236,16 @@ function renderNextPage(data) {
   nextBtn.addEventListener("click", nextReviewPage);
   const previousBtn = document.querySelector(".previous-btn");
   previousBtn.addEventListener("click", previousReviewPage);
+}
+
+function getStars(rating) {
+  const notFilled = 5 - rating;
+  let stars = '';
+  for(let i = 0; i < rating; i++) {
+    stars += `<span class="star"></span>`;
+  }
+  stars += `<span class="star-empty"></span>`.repeat(notFilled);
+  return stars;
 }
 
 // Send a review for the movie \\

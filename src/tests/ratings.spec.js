@@ -1,26 +1,41 @@
 import { describe, expect, test } from "@jest/globals";
-import { loadMovieRatings } from "../helpers/ratings";
-import { getMovieRatingsMock } from "../tests/ratings.mock.js";
+import { movieRatings } from "../helpers/ratings.js";
+import { manyRatings, threeRatings } from "../tests/ratings.mock.js";
 
 describe('RATING', () => {
-    test('CHECK IF RATING IS FOUND', async () => {
-        const movieId = 2
-        const result = await loadMovieRatings(movieId);
-       expect(result.length).toBeGreaterThan(0);
+    test('CHECK IF RATING COMES FROM THE CMS API', async () => {
+        const movieId = 1
+        const result = await movieRatings({
+            loadMovieRatings: async(id) => {
+                const imdbMovieId = manyRatings.data[0].attributes.movie.data.attributes.imdbId;
+                const ratings = manyRatings.data.map((review) => review.attributes.rating);
+                return {
+                  imdbMovieId,
+                  ratings
+                };
+            }
+        }, movieId);
+        expect(result.rating).toBeGreaterThan(0);
+        expect(result.origin).toBe("CMS API");
     } )
-} )
+});
 
 describe('IMDB?', () => {
     test('IF TEST SUCCEDS THEN RATING IS FROM IMDB', async () => {
-        const movieId = 3
-        const result = await loadMovieRatings(movieId);
-        expect(result.length).toBeGreaterThan(5);
+        const movieId = 1
+        const result = await movieRatings(apiAdapterMock, movieId);
+        expect(result.origin).toBe("IMDB API");
+        console.log(result)
     })
-})
+});
 
-describe('MOCK RATINGS', () => {
-    test('GET RATINGS FROM MOCK', async () => {
-        const result = getMovieRatingsMock();
-        expect(result.length).toBeGreaterThan(0);
-    })
-})
+const apiAdapterMock = {
+    loadMovieRatings: async (id) => {
+        const imdbMovieId = threeRatings.data[0].attributes.movie.data.attributes.imdbId;
+        const ratings = threeRatings.data.map((review) => review.attributes.rating);
+        return {
+          imdbMovieId,
+          ratings
+        };
+    }
+}

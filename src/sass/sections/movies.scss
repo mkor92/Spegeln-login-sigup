@@ -1,3 +1,19 @@
+.star,
+.star-empty {
+  display: inline-block;
+  background-image: url('/static/images/star.svg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  width: 1rem;
+  height: 1rem;
+  margin-right: .2rem;
+}
+
+.star-empty {
+  background-image: url('/static/images/star-empty.svg');
+}
+
 .movies {
   margin: 0px auto;
   padding: auto;
@@ -32,10 +48,9 @@
   .movies-h2 {
     margin: 20px 0px 10px;
     color: $second-color;
-
     width: 100%;
-
     border-bottom: 1px solid $second-color;
+    padding-top: 1rem;
   }
   .movies-list {
     margin-top: 3rem;
@@ -146,13 +161,26 @@
 .rating {
   color: $second-color;
   margin: 1rem;
+  margin-top: 2rem;
+  margin-bottom: 7rem;
+  margin-left: 0;
+
+  >h3 {
+    font-size: 1.45rem;
+    margin-bottom: .5rem;
+  }
+
+  >span {
+    width: 1.5rem;
+    height: 1.5rem;
+  }
 }
 .screenings {
   display: block;
   margin-top: 5vh;
   margin-bottom: 10vh;
 
-  > h2 {
+  >h2 {
     padding-left: 1rem;
     pointer-events: none;
     color: $second-color;
@@ -245,6 +273,7 @@
     display: inline-block;
     position: relative;
     padding-left: 1rem;
+    margin-bottom: 2rem;
 
     &::before {
       content: "";
@@ -316,6 +345,7 @@
 @media screen and (max-width: $breaking-point) {
   .rating {
     text-align: center;
+    margin-bottom: 5rem;
   }
   .movies {
     h2 {

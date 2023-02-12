@@ -691,6 +691,22 @@ header nav menu .active {
     margin: 0;
   }
 }
+.star,
+.star-empty {
+  display: inline-block;
+  background-image: url("/static/images/star.svg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  width: 1rem;
+  height: 1rem;
+  margin-right: 0.2rem;
+}
+
+.star-empty {
+  background-image: url("/static/images/star-empty.svg");
+}
+
 .movies {
   margin: 0px auto;
   padding: auto;
@@ -724,6 +740,7 @@ header nav menu .active {
   color: white;
   width: 100%;
   border-bottom: 1px solid white;
+  padding-top: 1rem;
 }
 .movies .movies-list {
   margin-top: 3rem;
@@ -877,6 +894,17 @@ header nav menu .active {
 .rating {
   color: white;
   margin: 1rem;
+  margin-top: 2rem;
+  margin-bottom: 7rem;
+  margin-left: 0;
+}
+.rating > h3 {
+  font-size: 1.45rem;
+  margin-bottom: 0.5rem;
+}
+.rating > span {
+  width: 1.5rem;
+  height: 1.5rem;
 }
 
 .screenings {
@@ -969,6 +997,7 @@ header nav menu .active {
   display: inline-block;
   position: relative;
   padding-left: 1rem;
+  margin-bottom: 2rem;
 }
 .review-container h2::before {
   content: "";
@@ -1037,6 +1066,7 @@ header nav menu .active {
 @media screen and (max-width: 640px) {
   .rating {
     text-align: center;
+    margin-bottom: 5rem;
   }
   .movies h2 {
     padding-left: 5%;
