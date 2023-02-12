@@ -10,7 +10,6 @@ let pageCount;
 async function showRating() {
   const res = await fetch(`/api/movies/${movieId}/ratings`);
   const payload = await res.json();
-  console.log(payload);
   document.querySelector(".rating").innerHTML = payload;
 }
 showRating();
@@ -261,7 +260,7 @@ document.querySelector("#addBtn").addEventListener("click", async (ev) => {
     body: JSON.stringify(body),
   });
 
-  console.log(res.json())
+
 
   document.querySelector("#rate").selectedIndex = 0;
   document.querySelector("#addComment").value = "";

@@ -23,7 +23,6 @@ export async function loadMovieRatings(id) {
     const payload = await res.json();
     const imdbResult = payload.imdbRating;
     const imdbFinalResult = imdbResult / 2;
-    console.log(imdbFinalResult);
     return "Betyg på IMDB: " + imdbFinalResult;
   }
 }
