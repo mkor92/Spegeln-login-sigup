@@ -6,7 +6,7 @@ const movieId = path.split("/").pop();
 async function showRating() {
   const res = await fetch(`/api/movies/${movieId}/ratings`);
   const payload = await res.json();
-  const rating = Math.round(Number(payload));
+  const rating = Math.round(Number(payload.rating));
   const starsTemplate = getStars(rating);
 
   let template = `

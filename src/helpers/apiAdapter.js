@@ -17,6 +17,16 @@ const apiAdapter = {
       const payload = await res.json();
       return payload;
     }
+  },
+  loadMovieRatings: async (id) => {
+    const res = await fetch(`${API}/reviews?filters[movie]=${id}&populate=movie`);
+    const payload = await res.json();
+    const imdbMovieId = payload.data[0].attributes.movie.data.attributes.imdbId;
+    const ratings = payload.data.map((review) => review.attributes.rating);
+    return {
+      imdbMovieId,
+      ratings
+    };
   }
 };
 

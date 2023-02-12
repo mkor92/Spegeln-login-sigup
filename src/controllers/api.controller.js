@@ -3,9 +3,7 @@ import { loadMovies, loadMovie } from "../helpers/movies.js";
 import { loadAllReviews, loadMovieReviews } from "../helpers/reviews.js";
 import { getAllScreenings, getMovieScreenings, screeningsStartpage } from "../helpers/screenings.js";
 import { sendReview } from "../helpers/review.js";
-
-
-import { loadMovieRatings } from "../helpers/ratings.js";
+import { movieRatings } from "../helpers/ratings.js";
 
 const apiCtrl = {};
 
@@ -46,7 +44,7 @@ apiCtrl.review = async (req, res) => {
 };
 
 apiCtrl.movieRating = async (req, res) => {
-  res.json(await loadMovieRatings(req.params.id));
+  res.json(await movieRatings(apiAdapter, req.params.id));
 };
 
 export default apiCtrl;

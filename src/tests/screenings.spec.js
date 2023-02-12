@@ -1,5 +1,5 @@
 import { describe, expect, test } from "@jest/globals";
-import { getAllScreenings, getMovieScreenings } from "../helpers/screenings";
+import { getAllScreenings, getMovieScreenings } from "../helpers/screenings.js";
 import { getMovieScreenings_all, getMovieScreenings_page3 } from './screenings.mock.js'
 
 describe('SCREENINGS', () => {
