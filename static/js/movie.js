@@ -177,7 +177,7 @@ function renderNextPage(data) {
 
 async function previousReviewPage() {
   reviewPage--;
-  if (reviewPage < reviewPageCount) {
+  if (reviewPage < 2) {
     getReviews();
   } else {
     const res = await fetch(`/api/reviews/${movieId}?page=${reviewPage}`);
