@@ -10,7 +10,6 @@ let pageCount;
 async function showRating() {
   const res = await fetch(`/api/movies/${movieId}/ratings`);
   const payload = await res.json();
-  console.log(payload);
   document.querySelector(".rating").innerHTML = payload;
 }
 showRating();
@@ -177,7 +176,7 @@ function renderNextPage(data) {
 
 async function previousReviewPage() {
   reviewPage--;
-  if (reviewPage < reviewPageCount) {
+  if (reviewPage < 2) {
     getReviews();
   } else {
     const res = await fetch(`/api/reviews/${movieId}?page=${reviewPage}`);
@@ -261,7 +260,7 @@ document.querySelector("#addBtn").addEventListener("click", async (ev) => {
     body: JSON.stringify(body),
   });
 
-  console.log(res.json())
+
 
   document.querySelector("#rate").selectedIndex = 0;
   document.querySelector("#addComment").value = "";

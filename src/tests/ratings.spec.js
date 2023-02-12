@@ -7,7 +7,6 @@ describe('RATING', () => {
         const movieId = 2
         const result = await loadMovieRatings(movieId);
        expect(result.length).toBeGreaterThan(0);
-       console.log(result);
     } )
 } )
 
@@ -15,7 +14,6 @@ describe('IMDB?', () => {
     test('IF TEST SUCCEDS THEN RATING IS FROM IMDB', async () => {
         const movieId = 3
         const result = await loadMovieRatings(movieId);
-        console.log(result);
         expect(result.length).toBeGreaterThan(5);
     })
 })
@@ -24,6 +22,5 @@ describe('MOCK RATINGS', () => {
     test('GET RATINGS FROM MOCK', async () => {
         const result = getMovieRatingsMock();
         expect(result.length).toBeGreaterThan(0);
-        console.log(result);
     })
 })
