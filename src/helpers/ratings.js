@@ -17,12 +17,12 @@ export async function loadMovieRatings(id) {
     let tempResult = sum / result.length;
     let finalResult = Math.round(tempResult * 10) / 10;
 
-    return "Rating: " + finalResult + " / 5";
+    return finalResult;
   } else {
     const res = await fetch(`${IMDB_API}&i=${imdbMovieId}`);
     const payload = await res.json();
     const imdbResult = payload.imdbRating;
     const imdbFinalResult = imdbResult / 2;
-    return "Betyg på IMDB: " + imdbFinalResult;
+    return imdbFinalResult;
   }
 }
