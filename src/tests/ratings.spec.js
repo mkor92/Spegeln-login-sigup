@@ -25,7 +25,6 @@ describe('IMDB?', () => {
         const movieId = 1
         const result = await movieRatings(apiAdapterMock, movieId);
         expect(result.origin).toBe("IMDB API");
-        console.log(result)
     })
 });
 
