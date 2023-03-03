@@ -242,7 +242,7 @@ function changeContent() {
     reviewBox.innerHTML = originalContent;
   }, 10000) };
 
-document.querySelector("#addBtn").addEventListener("click", async (ev) => {
+document.querySelector("#addBtn").addEventListener("click", async function addReview(ev) {
   ev.preventDefault();
 
   const body = {
