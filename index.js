@@ -1,5 +1,5 @@
-import app from './src/app.js'
-
-app.listen(app.get('port'), ()=> {
-    console.log(`Server listening on port ${app.get('port')}`);
-});
+import app from "./src/app.js";
+const port = 5080;
+app.listen(process.env.PORT || port, () =>
+  console.log(`app listening at http://localhost:${port}`)
+);
