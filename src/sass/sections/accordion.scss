@@ -23,11 +23,7 @@
     }
 
     &.prev {
-      background-image: linear-gradient(
-        to right,
-        rgba(0, 0, 0, 0.5) 0,
-        rgba(0, 0, 0, 0.0001) 100%
-      );
+      background-image: linear-gradient(to right, rgba(0, 0, 0, 0.5) 0, rgba(0, 0, 0, 0.0001) 100%);
       left: 0;
       opacity: 0.5;
       &:hover {
@@ -39,11 +35,7 @@
     }
 
     &.next {
-      background-image: linear-gradient(
-        to left,
-        rgba(0, 0, 0, 0.5) 0,
-        rgba(0, 0, 0, 0.0001) 100%
-      );
+      background-image: linear-gradient(to left, rgba(0, 0, 0, 0.5) 0, rgba(0, 0, 0, 0.0001) 100%);
       right: 0;
       opacity: 0.5;
       &:hover {
@@ -128,6 +120,7 @@
         width: 100%;
         height: inherit;
         object-fit: cover;
+        overflow: hidden;
       }
     }
   }
