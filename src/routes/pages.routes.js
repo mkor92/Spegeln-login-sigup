@@ -20,6 +20,20 @@ router.get("/", async (req, res) => {
   });
 });
 
+router.get("/login", (req, res) => {
+  res.render("login", {
+    headerMenu: menuWithActive(headerMenu, "/login"),
+    path: req.url,
+  });
+});
+
+router.get("/register", (req, res) => {
+  res.render("login", {
+    headerMenu: menuWithActive(headerMenu, "/login"),
+    path: req.url,
+  });
+});
+
 router.get("/about", (req, res) => {
   res.render("about-us", {
     headerMenu: menuWithActive(headerMenu, "/about"),
