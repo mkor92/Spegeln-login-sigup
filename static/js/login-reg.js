@@ -133,7 +133,7 @@ if (window.location.pathname == "/register") {
       }
     }
   });
-  signup.addEventListener("touchstart", (e) => {
+  signup.addEventListener("tap", (e) => {
     e.preventDefault();
     if (confirmPass.value == pass.value) {
       if (
