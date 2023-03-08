@@ -2,42 +2,83 @@ if (window.location.pathname == "/register") {
   const weak = document.querySelector("#weak");
   const medium = document.querySelector("#medium");
   const strong = document.querySelector("#strong");
-  const input = document.querySelector("#password-reg");
+  const pass = document.querySelector("#password-reg");
+  const confirmPass = document.querySelector("#cpassword-reg");
+  const firstname = document.querySelector("#firstname");
+  const lastname = document.querySelector("#lastname");
+  const email = document.querySelector("#email-reg");
+  const username = document.querySelector("#username-reg");
+  const pswError = document.querySelector("#psw-error");
+  const emailError = document.querySelector("#email-error");
+  let registerBox = document.querySelector("#register-box");
+  const emptyInput = document.querySelector("#emptyInput");
   const text = document.querySelector("#indicator-text");
-  let regExpWeak = /[a-z]/;
-  let regExpMedium = /\d+/;
-  let regExpStrong = /.[!,@,#,$,%,^,&,*,?,_,~,-,(,)]/;
+  const regExpWeak = /[a-z]/;
+  const regExpMedium = /\d+/;
+  const regExpStrong = /.[!,@,#,$,%,^,&,*,?,_,~,-,(,)]/;
 
-  input.addEventListener("keyup", (e) => {
-    e.preventDefault();
+  pass.addEventListener("keyup", () => {
     trigger();
+  });
+
+  function validateEmail() {
+    const format = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+    if (email.value.match(format)) {
+      return true;
+    } else {
+      return false;
+    }
+  }
+  email.addEventListener("keyup", () => {
+    setTimeout(() => {
+      if (validateEmail() != true && email.value.length > 4) {
+        emailError.innerHTML = "E-postadressen ej giltig";
+      } else {
+        emailError.innerHTML = "";
+      }
+    }, 4000);
+  });
+
+  confirmPass.addEventListener("keyup", () => {
+    if (confirmPass.value.length != 0) {
+      if (pass.value == confirmPass.value) {
+        pswError.innerHTML = "Lösenorden matchar";
+        pswError.style.color = "green";
+      } else {
+        pswError.innerHTML = "Lösenorden matchar inte";
+        pswError.style.color = "red";
+      }
+    } else {
+      pswError.innerHTML = "Lösenordet kan inte vara tomt";
+      pswError.style.color = "red";
+    }
   });
 
   function trigger() {
     let no = 0;
-    if (input.value != "") {
+    if (pass.value != "") {
       weak.style.display = "block";
       text.innerHTML = "Svagt lösenord";
 
       if (
-        input.value.length <= 3 &&
-        (input.value.match(regExpWeak) ||
-          input.value.match(regExpMedium) ||
-          input.value.match(regExpStrong))
+        pass.value.length <= 3 &&
+        (pass.value.match(regExpWeak) ||
+          pass.value.match(regExpMedium) ||
+          pass.value.match(regExpStrong))
       )
         no = 1;
       if (
-        input.value.length >= 6 &&
-        ((input.value.match(regExpWeak) && input.value.match(regExpMedium)) ||
-          (input.value.match(regExpMedium) && input.value.match(regExpStrong)) ||
-          (input.value.match(regExpWeak) && input.value.match(regExpStrong)))
+        pass.value.length >= 6 &&
+        ((pass.value.match(regExpWeak) && pass.value.match(regExpMedium)) ||
+          (pass.value.match(regExpMedium) && pass.value.match(regExpStrong)) ||
+          (pass.value.match(regExpWeak) && pass.value.match(regExpStrong)))
       )
         no = 2;
       if (
-        input.value.length >= 6 &&
-        input.value.match(regExpWeak) &&
-        input.value.match(regExpMedium) &&
-        input.value.match(regExpStrong)
+        pass.value.length >= 6 &&
+        pass.value.match(regExpWeak) &&
+        pass.value.match(regExpMedium) &&
+        pass.value.match(regExpStrong)
       )
         no = 3;
       if (no == 1) {
@@ -68,22 +109,29 @@ if (window.location.pathname == "/register") {
   }
 
   function addData() {
-    let firstname = document.querySelector("#firstname").value;
-    let username = document.querySelector("#username-reg").value;
-    let pass = document.querySelector("#password-reg").value;
-    let confirmPass = document.querySelector("#cpassword-reg").value;
-    let registerBox = document.querySelector("#register-box");
-    let registerText = document.querySelector("#register-text");
-    let pswError = document.querySelector("#psw-error");
-    sessionStorage.setItem("userName", username);
-    sessionStorage.setItem("userPass", pass);
-    sessionStorage.setItem("firstName", firstname);
+    sessionStorage.setItem("userName", username.value);
+    sessionStorage.setItem("userPass", pass.value);
+    sessionStorage.setItem("firstName", firstname.value);
   }
 
   const signup = document.querySelector("#signup");
 
-  signup.addEventListener("click", () => {
-    addData();
+  signup.addEventListener("click", (e) => {
+    e.preventDefault();
+    if (confirmPass.value == pass.value) {
+      if (
+        firstname.value.length >= 2 &&
+        lastname.value.length > 1 &&
+        username.value.length > 1 &&
+        email.value.length > 4
+      ) {
+        addData();
+        registerBox.innerHTML = `<h2 class="text-3xl block text-center font-semibold" id="register-text"></i>Du är nu registrerad!</h2>`;
+        registerBox.firstChild.style.color = "#00CCA4";
+      } else {
+        emptyInput.innerHTML = "Du måste fylla i alla fält korrekt";
+      }
+    }
   });
 }
 
@@ -108,14 +156,21 @@ if (window.location.pathname == "/login") {
       welcomeText3.innerHTML = "Du har 0 poäng på ditt bonussaldo";
       welcomeBox.append(welcomeText, welcomeText2);
       menuText.innerHTML = "Min sida";
-    } else {
+    } else if (enterUsername.length != 0 && enterPass.length != 0) {
       errorMsg.innerHTML = "Fel användarnamn eller lösenord";
+    } else if (enterUsername.length == 0 && enterPass.length == 0) {
+      errorMsg.innerHTML = "Du måste fylla i båda fälten";
+    } else if (enterUsername.length != 0 && enterPass.length == 0) {
+      errorMsg.innerHTML = "Vänligen fyll i ditt lösenord";
+    } else if (enterUsername.length == 0 && enterPass.length != 0) {
+      errorMsg.innerHTML = "Vänligen fyll i ditt användarnamn";
     }
   }
 
   const login = document.querySelector("#logInBtn");
 
-  login.addEventListener("click", () => {
+  login.addEventListener("click", (e) => {
+    e.preventDefault();
     checkData();
   });
 }
