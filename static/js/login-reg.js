@@ -116,7 +116,7 @@ if (window.location.pathname == "/register") {
 
   const signup = document.querySelector("#signup");
 
-  signup.addEventListener("click", (e) => {
+  signup.addEventListener("pointerdown", (e) => {
     e.preventDefault();
     if (confirmPass.value == pass.value) {
       if (
