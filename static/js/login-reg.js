@@ -116,7 +116,26 @@ if (window.location.pathname == "/register") {
 
   const signup = document.querySelector("#signup");
 
-  signup.addEventListener("pointerdown", (e) => {
+  signup.addEventListener("click", (e) => {
+    e.preventDefault();
+    if (confirmPass.value == pass.value) {
+      if (
+        firstname.value.length >= 2 &&
+        lastname.value.length > 1 &&
+        username.value.length > 1 &&
+        email.value.length > 4
+      ) {
+        addData();
+        registerBox.innerHTML = `<h2 class="text-3xl block text-center font-semibold" id="register-text"></i>Du är nu registrerad!</h2>`;
+        registerBox.firstChild.style.color = "#00CCA4";
+      } else {
+        emptyInput.innerHTML = "Du måste fylla i alla fält korrekt";
+      }
+    }
+  });
+
+  signup.addEventListener("touchstart", (e) => {
+    console.log(e);
     e.preventDefault();
     if (confirmPass.value == pass.value) {
       if (
