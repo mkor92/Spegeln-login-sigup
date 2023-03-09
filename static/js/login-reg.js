@@ -116,8 +116,7 @@ if (window.location.pathname == "/register") {
 
   const signup = document.querySelector("#signup");
 
-  signup.addEventListener("click", (e) => {
-    e.preventDefault();
+  signup.addEventListener("click", () => {
     if (confirmPass.value == pass.value) {
       if (
         firstname.value.length >= 2 &&
@@ -134,9 +133,7 @@ if (window.location.pathname == "/register") {
     }
   });
 
-  signup.addEventListener("touchstart", (e) => {
-    console.log(e);
-    e.preventDefault();
+  signup.addEventListener("touchstart", () => {
     if (confirmPass.value == pass.value) {
       if (
         firstname.value.length >= 2 &&
