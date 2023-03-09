@@ -29,13 +29,13 @@
         
       </div>
       <div class="mt-5">
-        <a id="logInBtn" class="inline-block text-center border-2 border-login-btn bg-login-btn text-black py-1 w-full rounded-md hover:bg-transparent hover:text-login-btn font-semibold">Logga in</a>
+        <button id="logInBtn" class="border-2 border-login-btn bg-login-btn text-black py-1 w-full rounded-md hover:bg-transparent hover:text-login-btn font-semibold">Logga in</button>
       </div>
+      <div class="mt-5 flex justify-center items-center "><h3 class=" text-center  w-96 bg-white  p-2 rounded-md shadow-lg" id="logged-in-text3">Inte medlem än? <a href="/register" class="underline decoration-double decoration-login-btn font-semibold hover:text-login-btn ">Registrera dig här</a></h3></div>
       </div>
     </form>
       
        </div>
-       <div class="mt-5 flex justify-center items-center mb-10 "><h3 class=" text-center  w-96 bg-white  p-2 rounded-md shadow-lg" id="logged-in-text3">Inte medlem än? <a href="/register" class="underline decoration-double decoration-login-btn font-semibold hover:text-login-btn ">Registrera dig här</a></h3></div>
        <% } %>
 
 
@@ -48,16 +48,12 @@
         <hr class="mt-3">
         <form action="" class="form" id="form">
         <div class="mt-3 form-control">
-          <label for="firstname" class="block text-base mb-2">Förnamn</label>
-          <input type="text" id="firstname" class="border w-full text-base px-2 py-1 focus:outline-none focus:ring-0 focus:border-gray-600" placeholder="Ditt förnamn" required autocomplete="nope">
+          <label for="name" class="block text-base mb-2">För- och efternamn</label>
+          <input type="text" id="name" class="border w-full text-base px-2 py-1 focus:outline-none focus:ring-0 focus:border-gray-600" placeholder="Ditt för- och efternamn" required autocomplete="nope">
           
           
         </div>
-        <div class="mt-3 form-control">
-          <label for="lastname" class="block text-base mb-2">Efternamn</label>
-          <input type="text" id="lastname" class="border w-full text-base px-2 py-1 focus:outline-none focus:ring-0 focus:border-gray-600" placeholder="Ditt efternamn" required autocomplete="nope">
-          
-        </div>
+        
         <div class="mt-3 form-control">
           <label for="username-reg" class="block text-base mb-2">Användarnamn</label>
           <input type="text" id="username-reg" class="border w-full text-base px-2 py-1 focus:outline-none focus:ring-0 focus:border-gray-600" placeholder="Välj ett användarnamn" required autocomplete="nope">
@@ -96,13 +92,13 @@
       </div>
       <p class="font-semibold mt-3 text-red-600 text-center" id="emptyInput"></p>
     </form>
-    <div class="mt-5 cursor-pointer">
-      <a id="signup" onclick="" class="inline-block text-center btn border-2 cursor-pointer border-login-btn bg-login-btn text-black py-1 min-w-full rounded-md hover:bg-transparent hover:text-login-btn font-semibold">Bli medlem</a>
+    <div class="mt-5">
+      <button id="signup" class="btn border-2  border-login-btn bg-login-btn text-black py-1 min-w-full rounded-md hover:bg-transparent hover:text-login-btn font-semibold">Bli medlem</button>
     </div>
+    <div class="mt-5 flex justify-center items-center  "><h3 class=" text-center  w-96 bg-white  p-2 rounded-md shadow-lg">Tillbaka till inloggning? <a href="/login" class="underline decoration-double decoration-login-btn font-semibold hover:text-login-btn ">Klicka här</a></h3></div>
       </div>
       
        </div>
-       <div class="mt-5 flex justify-center items-center mb-10 "><h3 class=" text-center  w-96 bg-white  p-2 rounded-md shadow-lg">Tillbaka till inloggning? <a href="/login" class="underline decoration-double decoration-login-btn font-semibold hover:text-login-btn ">Klicka här</a></h3></div>
 
        <% } %>
 

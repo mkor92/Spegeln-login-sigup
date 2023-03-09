@@ -4,8 +4,7 @@ if (window.location.pathname == "/register") {
   const strong = document.querySelector("#strong");
   const pass = document.querySelector("#password-reg");
   const confirmPass = document.querySelector("#cpassword-reg");
-  const firstname = document.querySelector("#firstname");
-  const lastname = document.querySelector("#lastname");
+  const name = document.querySelector("#name");
   const email = document.querySelector("#email-reg");
   const username = document.querySelector("#username-reg");
   const pswError = document.querySelector("#psw-error");
@@ -111,45 +110,24 @@ if (window.location.pathname == "/register") {
   function addData() {
     sessionStorage.setItem("userName", username.value);
     sessionStorage.setItem("userPass", pass.value);
-    sessionStorage.setItem("firstName", firstname.value);
+    sessionStorage.setItem("name", name.value);
   }
 
-  const signup = document.querySelector("#signup");
+  const signup = document.querySelectorAll("#signup");
 
-  signup.addEventListener("click", (e) => {
-    e.preventDefault();
-    if (confirmPass.value == pass.value) {
-      if (
-        firstname.value.length >= 2 &&
-        lastname.value.length > 1 &&
-        username.value.length > 1 &&
-        email.value.length > 4
-      ) {
-        addData();
-        registerBox.innerHTML = `<h2 class="text-3xl block text-center font-semibold" id="register-text"></i>Du är nu registrerad!</h2>`;
-        registerBox.firstChild.style.color = "#00CCA4";
-      } else {
-        emptyInput.innerHTML = "Du måste fylla i alla fält korrekt";
+  signup.forEach((click) => {
+    click.addEventListener("click", (e) => {
+      e.preventDefault();
+      if (confirmPass.value == pass.value) {
+        if (name.value.length >= 4 && username.value.length > 1 && email.value.length > 4) {
+          addData();
+          registerBox.innerHTML = `<h2 class="text-3xl block text-center font-semibold" id="register-text"></i>Du är nu registrerad!</h2><div class="mt-5 flex justify-center items-center  "><h3 class=" text-center  w-96 bg-white  p-2 rounded-md shadow-lg">Tillbaka till inloggning? <a href="/login" class="underline decoration-double decoration-login-btn font-semibold hover:text-login-btn ">Klicka här</a></h3></div>`;
+          registerBox.firstChild.style.color = "#00CCA4";
+        } else {
+          emptyInput.innerHTML = "Du måste fylla i alla fält korrekt";
+        }
       }
-    }
-  });
-
-  signup.addEventListener("touchstart", (e) => {
-    e.preventDefault();
-    if (confirmPass.value == pass.value) {
-      if (
-        firstname.value.length >= 2 &&
-        lastname.value.length > 1 &&
-        username.value.length > 1 &&
-        email.value.length > 4
-      ) {
-        addData();
-        registerBox.innerHTML = `<h2 class="text-3xl block text-center font-semibold" id="register-text"></i>Du är nu registrerad!</h2>`;
-        registerBox.firstChild.style.color = "#00CCA4";
-      } else {
-        emptyInput.innerHTML = "Du måste fylla i alla fält korrekt";
-      }
-    }
+    });
   });
 }
 
@@ -165,12 +143,12 @@ if (window.location.pathname == "/login") {
     let errorMsg = document.querySelector("#error");
     let getUsername = sessionStorage.getItem("userName");
     let getPass = sessionStorage.getItem("userPass");
-    let getFirstName = sessionStorage.getItem("firstName");
+    let getName = sessionStorage.getItem("name");
 
     if (enterUsername == getUsername && enterPass == getPass) {
       welcomeBox.innerHTML = "";
-      welcomeText.innerHTML = `Välkommen ${getFirstName}`;
-      welcomeText2.innerHTML = "Du är nu inloggad!";
+      welcomeText.innerHTML = `Välkommen <br> ${getName}`;
+      welcomeText2.innerHTML = "Du är nu inloggad!<br><br>Du har 0 poäng på ditt bonussaldo";
       welcomeText3.innerHTML = "Du har 0 poäng på ditt bonussaldo";
       welcomeBox.append(welcomeText, welcomeText2);
       menuText.innerHTML = "Min sida";
