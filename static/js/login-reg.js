@@ -30,12 +30,12 @@ if (window.location.pathname == "/register") {
   }
   email.addEventListener("input", () => {
     setTimeout(() => {
-      if (validateEmail() != true && email.value.length > 4) {
+      if (validateEmail() != true) {
         emailError.innerHTML = "E-postadressen ej giltig";
       } else {
         emailError.innerHTML = "";
       }
-    }, 4000);
+    }, 2000);
   });
 
   confirmPass.addEventListener("input", () => {

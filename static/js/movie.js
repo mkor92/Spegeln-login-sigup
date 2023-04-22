@@ -104,20 +104,23 @@ function renderFirstPage(data) {
   reviewContainer.innerHTML = "";
   let template = `<h2>Recensioner</h2><p class="review-page">Sida: ${reviewPage} av ${reviewPageCount}</p>`;
   data.map((review) => {
-    let rating = review.attributes.rating;
-    let comment = review.attributes.comment;
-    let author = review.attributes.author;
-    const stars = getStars(rating);
+    if (/<\/?[a-z][\s\S]*>/i.test(review.attributes.comment) == false) {
+      let rating = review.attributes.rating;
+      let comment = review.attributes.comment;
+      let author = review.attributes.author;
+      let verified = review.attributes.verified;
+      const stars = getStars(rating);
 
-    template += `
+      template += `
         <li>
             <div>
-                <h3>${stars}</h3>
+                <h3 class>${stars}</h3>
                 <p>${comment}</p>
-                <p class="review-author">${author}</p>           
+                <p class="review-author">${author}${verified}</p>           
             </div> 
         </li>
         `;
+    }
   });
   reviewContainer.insertAdjacentHTML("beforeend", template);
   reviewContainer.insertAdjacentHTML(
@@ -128,7 +131,10 @@ function renderFirstPage(data) {
     `
   );
   const nextBtn = document.querySelector(".next-btn");
-  nextBtn.addEventListener("click", nextReviewPage);
+  nextBtn.addEventListener("click", () => {
+    nextReviewPage();
+    console.log("hej");
+  });
 }
 
 getReviews();
@@ -154,6 +160,7 @@ function renderNextPage(data) {
   reviewContainer.innerHTML = "";
   let template = `<h2>Recensioner</h2><p class="review-page">Sida: ${reviewPage} av ${reviewPageCount}</p>`;
   data.map((review) => {
+    console.log(/<\/?[a-z][\s\S]*>/i.test(review.attributes.comment, review.attributes.author));
     let rating = review.attributes.rating;
     let comment = review.attributes.comment;
     let author = review.attributes.author;
@@ -162,7 +169,7 @@ function renderNextPage(data) {
     template += `
         <li>
             <div>
-                <h3>${stars}</h3>
+                <h3 class>${stars}</h3>
                 <p>${comment}</p>
                 <p class="review-author">${author}</p>           
             </div> 
@@ -214,7 +221,7 @@ function renderNextPage(data) {
     template += `
         <li>
             <div>
-                <h3>${stars}</h3>
+                <h3 class>${stars}</h3>
                 <p>${comment}</p>
                 <p class="review-author">${author}</p>           
             </div> 
@@ -240,8 +247,8 @@ function renderNextPage(data) {
 
 function getStars(rating) {
   const notFilled = 5 - rating;
-  let stars = '';
-  for(let i = 0; i < rating; i++) {
+  let stars = "";
+  for (let i = 0; i < rating; i++) {
     stars += `<span class="star"></span>`;
   }
   stars += `<span class="star-empty"></span>`.repeat(notFilled);
@@ -254,14 +261,15 @@ let comment = document.querySelector("#addComment");
 let authorName = document.querySelector("#addName");
 let reviewBox = document.querySelector(".addReview");
 
-// Change temporary content of adding review box into Thank you text 
+// Change temporary content of adding review box into Thank you text
 function changeContent() {
-  var form = document.getElementById("form")
+  var form = document.getElementById("form");
   var originalContent = reviewBox.innerHTML;
   reviewBox.innerHTML = "Tack för din recension!";
-  setTimeout(function() {
+  setTimeout(function () {
     reviewBox.innerHTML = originalContent;
-  }, 10000) };
+  }, 10000);
+}
 
 document.querySelector("#addBtn").addEventListener("click", async (ev) => {
   ev.preventDefault();
@@ -270,7 +278,7 @@ document.querySelector("#addBtn").addEventListener("click", async (ev) => {
     author: authorName.value,
     comment: comment.value,
     rating: parseInt(rate.value),
-  }
+  };
 
   const res = await fetch(`/api/reviews/${movieId}`, {
     method: "POST",
@@ -281,8 +289,6 @@ document.querySelector("#addBtn").addEventListener("click", async (ev) => {
     },
     body: JSON.stringify(body),
   });
-
-
 
   document.querySelector("#rate").selectedIndex = 0;
   document.querySelector("#addComment").value = "";
@@ -295,8 +301,7 @@ document.querySelector("#addBtn").addEventListener("click", async (ev) => {
     reviewContainer.classList.remove("screeningsAnim");
   }, 900);
   reviewContainer.innerHTML = "";
-  
+
   getReviews();
   changeContent();
-
 });

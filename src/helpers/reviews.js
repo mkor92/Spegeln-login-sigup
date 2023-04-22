@@ -18,5 +18,6 @@ export async function loadMovieReviews(id, page) {
 export async function loadAllReviews() {
   const res = await fetch(API_URL_REVIEWS);
   const payload = await res.json();
+
   return payload;
 }
